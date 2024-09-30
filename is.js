@@ -6,7 +6,7 @@ is.undef = x => typeof x === 'undefined'
 is.def = x => typeof x !== 'undefined'
 is.arr = x => Array.isArray(x)
 is.obj = x => {
-    typeOfX = typeof x;
+    const typeOfX = typeof x;
     if (typeOfX === 'null'|| typeOfX === 'object'){
         return true
     }
