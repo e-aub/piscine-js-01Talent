@@ -4,16 +4,18 @@ const obj = {str : 'ayoub',
     num : 2004,
     bool : true,
     undef : undefined,
-    nested:{
-        arr : [4, undefined, '2'],
-        obj : {
-            str : 'hackerman',
-            num : 2004,
-            bool : true
-        }
+}
+const nested ={
+    arr : [4, undefined, '2'],
+    obj : {
+        str : 'hackerman',
+        num : 2004,
+        bool : true
     }
 }
 
+deepFreeze(nested)
+deepFreeze(arr)
 deepFreeze(obj)
 
 function deepFreeze(object){
