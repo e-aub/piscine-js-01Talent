@@ -8,7 +8,7 @@ const planets = {earth : 1.0,
     neptune : 164.79132};
 
 const dogYears = (planet, dogsAgeInSeconds) => {
-    dogsAgeInYears = dogsAgeInSeconds/ 31_557_600
+    var dogsAgeInYears = dogsAgeInSeconds/ 31_557_600
     dogsAgeInYears = 7 * dogsAgeInYears *(planets['earth']/planets[planet])
     return Math.round(dogsAgeInYears*100) / 100
 }
