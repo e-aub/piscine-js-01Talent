@@ -6,12 +6,13 @@ const first = x => {
   
   const last = x => {
     if (x.length > 0) {
-      return x[x.length-1];
+      return x[x.length - 1];
     }
   };
   
   const kiss = x => {
     if (x.length >= 2) {
-      return x.slice(0, 1) + x.slice(-1);
+      return [x[0] , x[x.length-1]];
     }
   };
+  
