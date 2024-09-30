@@ -21,7 +21,7 @@ function deepFreeze(object){
     console.log(propNames)
     for (const name of propNames){
         const value = object[name]
-        if (typeof value === "object"){
+        if (value && typeof value === "object"){
             deepFreeze(value)
         }
     }
