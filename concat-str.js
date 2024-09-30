@@ -1,1 +1,1 @@
-const concatStr =(x, y) => x+y
+const concatStr =(x, y) => ''+x+y
