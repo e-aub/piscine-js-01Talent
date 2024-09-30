@@ -14,7 +14,7 @@ const obj = {str : 'ayoub',
     }
 }
 
-deepFreeze(object)
+deepFreeze(obj)
 
 function deepFreeze(object){
     const propNames = Reflect.ownKeys(object)
