@@ -1,0 +1,1 @@
+const concatStr =(x, y) => x+y
