@@ -1,2 +1,2 @@
-var smalls = Number.MIN_VALUE;
-var biggie = Number.MAX_VALUE;
+var smalls = Number.NEGATIVE_INFINITY;
+var biggie = Number.POSITIVE_INFINITY;
