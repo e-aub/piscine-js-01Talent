@@ -1,5 +1,5 @@
-const isNotUndefinedOrNull = (x) => x !== undefined && x !== null
-const isNotZero = (x) => x != 0 && x != '0'
+const isNotUndefinedOrNull = (x) =>  x != null
+const isNotZero = (x) => x != '0'
 const getAcceleration = function(object) {
     if (isNotUndefinedOrNull(object.f) && isNotUndefinedOrNull(object.m) && isNotZero(object.m)){
         return object.f/object.m
