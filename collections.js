@@ -26,7 +26,7 @@ const superTypeOf = function(value){
     }else if (typeof value === 'undefined'){
         return 'undefined'
     }else if (typeof value === 'string'){
-        return 'string'
+        return 'String'
     }else if (typeof value === 'number'){
         return 'Number'
     }else if (value instanceof Map){
