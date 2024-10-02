@@ -26,7 +26,7 @@ const indexOf = function(arr, toBeMatched, start){
 
 
 
-const lastOf = function(arr, toBeMatched, start){
+const lastIndexOf = function(arr, toBeMatched, start){
     if (start === undefined){
         start = 0
     }
@@ -39,6 +39,3 @@ const lastOf = function(arr, toBeMatched, start){
     }
     return -1
 }
-
-
-console.log(indexOf(['t', 0, 0, 't'], 't', 1))
