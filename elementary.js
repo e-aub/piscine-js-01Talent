@@ -1,7 +1,7 @@
 const divide = function(a, b){
-    var sign = 1
+    var positive = true
     if (a < 0||b < 0){
-        sign = -1
+        positive = false
     }
 
     a = Math.abs(a)
@@ -13,16 +13,21 @@ const divide = function(a, b){
             a -= b
             quotient += 1
         }
-        return quotient * sign
+        return !positive ? ~quotient +1 : quotient
     }
-    return Infinity * sign
+    return !positive ? -Infinity : Infinity
 }
 
 
 const modulo = function(a, b){
-    var sign = 1
+    var positive = true
+    if (b == 0){
+        return NaN
+    }
     if (a < 0){
-        sign = -1
+        positive = false
+    }else if (a == 0){
+        return 0
     }
 
     a = Math.abs(a)
@@ -30,17 +35,17 @@ const modulo = function(a, b){
     while(a >= b){
         a -= b
      }
-    return sign === -1 ? ~a +1 : a 
+    return !positive ? ~a +1 : a 
 }
 
 
 const multiply = function(a, b){
     var result = 0
-    var sign = 1
+    var positive = true
     if (a == 0 || b == 0){
         return 0
     }else if (a < 0||b < 0){
-        sign = -1
+        positive = false
         if (a < 0){
             a = Math.abs(a)
         }else if (b < 0){
@@ -51,5 +56,5 @@ const multiply = function(a, b){
         result += a
         b--
     }
-    return sign === -1 ? ~result + 1 : result
+    return !positive ? ~result + 1 : result
 }
