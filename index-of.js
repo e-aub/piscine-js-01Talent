@@ -30,12 +30,10 @@ const lastIndexOf = function(arr, toBeMatched, start){
     if (start === undefined){
         start = 0
     }
-    for (let i = arr.length; i > 0; i--){
-        if (i >= start){
+    for (let i = arr.length-start; i >= 0; i--){
         if (arr[i] == toBeMatched){
             return i
         }
-    }
     }
     return -1
 }
