@@ -1,7 +1,14 @@
 const divide = function(a, b){
     var positive = true
-    if (a < 0||b < 0){
+    if (a < 0){
         positive = false
+    } 
+    if (b < 0){
+        if (!positive){
+            positive = true
+        }else{
+            positive = false
+        }
     }
 
     a = Math.abs(a)
