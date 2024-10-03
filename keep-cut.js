@@ -30,5 +30,9 @@ const keepLast = function(str){
 //returns the first 2 characters, and the last 2 characters.
 
 const keepFirstLast = function(str){
+    if (str.length === 2){
+        return str
+    }
     return keepFirst(str) + keepLast(str)
 }
+
