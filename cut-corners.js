@@ -64,8 +64,8 @@ const round = function (number) {
 
 
 
-const nums = [3, -3, 3, -3, 0]
-console.log(nums.map(round))
-console.log(nums.map(floor))
-console.log(nums.map(trunc))
-console.log(nums.map(ceil))
+// const nums = [3, -3, 3, -3, 0]
+// console.log(nums.map(round))
+// console.log(nums.map(floor))
+// console.log(nums.map(trunc))
+// console.log(nums.map(ceil))
