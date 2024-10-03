@@ -40,8 +40,9 @@ const getFractional = function (number) {
 
 const round = function (number) {
     const fractional = getFractional(number)
+    var truncated = trunc(number)
     if (fractional >= 0.5) {
-        return ceil(number)
+        return truncated + (number < 0 ? -1 : 1);
     }
-    return floor(number)
+    return truncated
 }
