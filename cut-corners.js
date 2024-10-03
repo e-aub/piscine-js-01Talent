@@ -1,34 +1,20 @@
-const extractLastNDigits = function (number, n) {
-    let powerOfTen = 1;
-    for (let i = 0; i < n; i++) {
-        powerOfTen *= 10; 
-    }
-
-    while (number >= powerOfTen) {
-        number -= powerOfTen; 
-    }
-    return number * (1 / powerOfTen);
-}
-
-const extractDecimalDigits = function (number) {
-    let decimalPlaces = 0;
-    while (!Number.isInteger(number) && number !== 0) {
-        decimalPlaces++;
-        number *= 10; 
-    }
-
-    return extractLastNDigits(number, decimalPlaces);
-}
-
 const trunc = function (number) {
-    if(Number.isInteger(number)){
-        return number
+    var isNegative = false
+    var result = 0
+    if (number > 0xfffffffff) {
+        number -= 0xfffffffff;
+        result += 0xfffffffff;
     }
-    if (number < 0){
-        return number + extractDecimalDigits(Math.abs(number))
-    }else{
-        return number - extractDecimalDigits(Math.abs(number))
+
+    if (number < 0) {
+        isNegative = true
+        number = Math.abs(number)
     }
+    while (number >= 1) {
+        number--
+        result++
+    }
+    return isNegative ? result * -1 : result
 }
 
 const ceil = function (number) {
@@ -55,12 +41,8 @@ const getFractional = function (number) {
 const round = function (number) {
     const fractional = getFractional(number);
     const truncated = trunc(number);
-
-    if (fractional > 0.5) {
-        return truncated + (number < 0 ? -1 : 1);
-    } else if (fractional < 0.5) {
-        return truncated;
-    } else {
+    if (fractional >= 0.5) {
         return truncated + (number < 0 ? -1 : 1);
     }
+    return truncated;
 }
