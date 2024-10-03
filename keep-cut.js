@@ -33,6 +33,7 @@ const keepFirstLast = function(str){
     if (str.length <= 3){
         return str
     }
+    return keepFirst(str) + keepLast(str)
 }
 
-// console.log(keepFirstLast('afd'))
+// console.log(keepFirstLast('abcdef'))
