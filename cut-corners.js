@@ -23,11 +23,11 @@ const ceil = function (number) {
 
 
 const floor = function (number) {
-    if (number < 0) {
+    if (number < 0 && getFractional(number)> 0)  {
         return trunc(number) - 1
     }
 
-    return getFractional(number) > 0 ? trunc(number) - 1 : trunc(number)
+    return getFractional(number) > 0 ? trunc(number)  : trunc(number)
 }
 
 const getFractional = function (number) {
@@ -46,11 +46,10 @@ const round = function (number) {
     return floor(number)
 }
 
-// console.log(Math.round(0.9));
-// // Expected output: 1
 
-// console.log(Math.round(5.95), Math.round(-5), Math.round(5));
-// // Expected output: 6 6 5
+const nums = [3, -3, 3, -3, 0]
 
-// console.log(Math.round(-5.05), Math.round(-5.5), Math.round(5));
-// // Expected output: -5 -5 -6
+console.log(nums.map(round))
+console.log(nums.map(floor))
+console.log(nums.map(trunc))
+console.log(nums.map(ceil))
