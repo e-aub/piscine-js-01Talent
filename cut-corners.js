@@ -55,17 +55,21 @@ const getFractional = function (number) {
 const round = function (number) {
     const fractional = getFractional(number);
     const truncated = trunc(number);
-    if (fractional >= 0.5) {
+
+    if (fractional > 0.5) {
+        return truncated + (number < 0 ? -1 : 1);
+    } else if (fractional < 0.5) {
+        return truncated;
+    } else {
         return truncated + (number < 0 ? -1 : 1);
     }
-    return truncated;
 }
 
 
 
 
-// const nums = [3, -3, 3, -3, 0]
-// console.log(nums.map(round))
-// console.log(nums.map(floor))
-// console.log(nums.map(trunc))
-// console.log(nums.map(ceil))
+const nums = [3, -3, 3, -3, 0]
+console.log(nums.map(round))
+console.log(nums.map(floor))
+console.log(nums.map(trunc))
+console.log(nums.map(ceil))
