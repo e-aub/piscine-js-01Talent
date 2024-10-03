@@ -45,11 +45,3 @@ const round = function (number) {
     }
     return floor(number)
 }
-
-
-const nums = [3, -3, 3, -3, 0]
-
-console.log(nums.map(round))
-console.log(nums.map(floor))
-console.log(nums.map(trunc))
-console.log(nums.map(ceil))
