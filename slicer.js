@@ -2,6 +2,10 @@ const slice = function(arr, start=0, end = arr.length){
     if (start === 0 && end === arr.length-1){
         return arr
     }
+    const isString = typeof arr === 'string';
+    if (isString) {
+        arr = arr.split('');
+    }
     var result = []
     if (start < 0 || end < 0){
         if (start < 0 && end === arr.length){
@@ -14,5 +18,8 @@ const slice = function(arr, start=0, end = arr.length){
             result.push(arr[i])
         }
     
-    return result
+    return isString ? result.join('') :result
 }
+
+
+console.log(slice('abcdef', 2))
