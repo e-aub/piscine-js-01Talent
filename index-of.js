@@ -23,7 +23,7 @@ const indexOf = function(arr, toBeMatched, start = 0){
 
 
 
-const lastIndexOf = function(arr, toBeMatched, start = 0){
+const lastIndexOf = function(arr, toBeMatched, start = arr.length-1){
     for (let i = arr.length-1; i >= start; i--){
         if (arr[i] == toBeMatched){
             return i
