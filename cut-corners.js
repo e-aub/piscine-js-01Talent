@@ -27,7 +27,7 @@ const floor = function (number) {
         return trunc(number) - 1
     }
 
-    return trunc(number)
+    return getFractional(number) > 0 ? trunc(number) - 1 : trunc(number)
 }
 
 const getFractional = function (number) {
@@ -45,3 +45,12 @@ const round = function (number) {
     }
     return floor(number)
 }
+
+// console.log(Math.round(0.9));
+// // Expected output: 1
+
+// console.log(Math.round(5.95), Math.round(-5), Math.round(5));
+// // Expected output: 6 6 5
+
+// console.log(Math.round(-5.05), Math.round(-5.5), Math.round(5));
+// // Expected output: -5 -5 -6
