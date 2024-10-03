@@ -1,16 +1,31 @@
+const extractLastNDigits = function (number, n) {
+    let powerOfTen = 1;
+    for (let i = 0; i < n; i++) {
+        powerOfTen *= 10; 
+    }
+
+    while (number >= powerOfTen) {
+        number -= powerOfTen; 
+    }
+    return number * (1 / powerOfTen);
+}
+
+const extractDecimalDigits = function (number) {
+    let decimalPlaces = 0;
+    while (!Number.isInteger(number) && number !== 0) {
+        decimalPlaces++;
+        number *= 10; 
+    }
+
+    return extractLastNDigits(number, decimalPlaces);
+}
+
 const trunc = function (number) {
-    if(number === 68719476735){return 68719476735}
-    var isNegative = false
-    var result = 0
-    if (number < 0) {
-        isNegative = true
-        number = Math.abs(number)
+    if (number < 0){
+        return number + extractDecimalDigits(Math.abs(number))
+    }else{
+        return number - extractDecimalDigits(Math.abs(number))
     }
-    while (number >= 1) {
-        number--
-        result++
-    }
-    return isNegative ? result * -1 : result
 }
 
 const ceil = function (number) {
@@ -42,5 +57,3 @@ const round = function (number) {
     }
     return truncated;
 }
-
-console.log()
