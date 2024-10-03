@@ -9,11 +9,8 @@ const includes = function(arr, toBeMatched){
 }
 
 
-const indexOf = function(arr, toBeMatched, start){
-    if (start === undefined){
-        start = 0
-    }
-    for (let i = 0; i < arr.length; i++){
+const indexOf = function(arr, toBeMatched, start = 0){
+    for (let i = start; i < arr.length; i++){
         if (i >= start){
             if (arr[i] == toBeMatched){
                 return i
@@ -26,11 +23,8 @@ const indexOf = function(arr, toBeMatched, start){
 
 
 
-const lastIndexOf = function(arr, toBeMatched, start){
-    if (start === undefined){
-        start = 0
-    }
-    for (let i = arr.length-start; i >= 0; i--){
+const lastIndexOf = function(arr, toBeMatched, start = 0){
+    for (let i = arr.length-1; i >= start; i--){
         if (arr[i] == toBeMatched){
             return i
         }
