@@ -21,28 +21,24 @@ const ceil = function (number) {
 }
 
 
-
 const floor = function (number) {
-    if (number < 0 && getFractional(number)> 0)  {
-        return trunc(number) - 1
+    if (number < 0 && getFractional(number) > 0) {
+        return trunc(number) - 1;
     }
-
-    return getFractional(number) > 0 ? trunc(number)  : trunc(number)
+    return trunc(number);
 }
 
+
 const getFractional = function (number) {
-    number = Math.abs(number)
-    while (number >= 1) {
-        number--
-    }
-    return number
+    return Math.abs(number) - trunc(Math.abs(number))
 }
 
 const round = function (number) {
-    const fractional = getFractional(number)
-    var truncated = trunc(number)
+    const fractional = getFractional(number);
+    const truncated = trunc(number);
     if (fractional >= 0.5) {
         return truncated + (number < 0 ? -1 : 1);
     }
-    return truncated
+    return truncated;
 }
+
