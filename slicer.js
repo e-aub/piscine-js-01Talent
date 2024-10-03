@@ -10,8 +10,12 @@ const slice = function(arr, start=0, end = arr.length){
     if (start < 0 || end < 0){
         if (start < 0 && end === arr.length){
             start = end + start
-        }else if(start > 0 && end < 0){
-            end = start - end
+        }else if(start >= 0 && end < 0){
+            if (start === 0){
+                end = arr.length + end
+            }else{
+                end = start - end
+            }
         }
     }
         for(let i = start; i < end; i++){
@@ -21,4 +25,4 @@ const slice = function(arr, start=0, end = arr.length){
     return isString ? result.join('') :result
 }
 
-// console.log(slice('abcdef', 0, -2))
+console.log(slice('abcdef', 0, -2))
