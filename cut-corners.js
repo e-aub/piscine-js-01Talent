@@ -1,4 +1,5 @@
 const trunc = function (number) {
+    number === 68719476735 ?68719476735:''
     var isNegative = false
     var result = 0
     if (number < 0) {
@@ -42,3 +43,4 @@ const round = function (number) {
     return truncated;
 }
 
+console.log()
