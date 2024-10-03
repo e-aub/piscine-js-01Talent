@@ -21,6 +21,9 @@ const extractDecimalDigits = function (number) {
 }
 
 const trunc = function (number) {
+    if(Number.isInteger(number)){
+        return number
+    }
     if (number < 0){
         return number + extractDecimalDigits(Math.abs(number))
     }else{
@@ -57,3 +60,12 @@ const round = function (number) {
     }
     return truncated;
 }
+
+
+
+
+const nums = [3, -3, 3, -3, 0]
+console.log(nums.map(round))
+console.log(nums.map(floor))
+console.log(nums.map(trunc))
+console.log(nums.map(ceil))
