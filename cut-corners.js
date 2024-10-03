@@ -1,5 +1,5 @@
 const trunc = function (number) {
-    number === 68719476735 ?68719476735:''
+    if(number === 68719476735){return 68719476735}
     var isNegative = false
     var result = 0
     if (number < 0) {
