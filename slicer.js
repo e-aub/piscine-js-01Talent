@@ -16,6 +16,9 @@ const slice = function(arr, start=0, end = arr.length){
             }else{
                 end = start - end
             }
+        }else if (start < 0&& end <0 ){
+            start = Math.abs(start)
+            end = start + Math.abs(end) +1
         }
     }
         for(let i = start; i < end; i++){
@@ -25,4 +28,4 @@ const slice = function(arr, start=0, end = arr.length){
     return isString ? result.join('') :result
 }
 
-console.log(slice('abcdef', 0, -2))
+// console.log(slice('abcdef', -3, -1))
