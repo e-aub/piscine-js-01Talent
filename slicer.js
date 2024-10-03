@@ -21,5 +21,4 @@ const slice = function(arr, start=0, end = arr.length){
     return isString ? result.join('') :result
 }
 
-
-console.log(slice('abcdef', 2))
+// console.log(slice('abcdef', 0, -2))
