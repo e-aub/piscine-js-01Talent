@@ -1,5 +1,5 @@
 const nasa = function(N){
-    result = new String
+    var result = new String
     for(let i = 1; i <=N; i++){
         if (i % 3 == 0 && i % 5 == 0){
             result += 'NASA'
