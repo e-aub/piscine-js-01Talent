@@ -1,4 +1,8 @@
-var vowels = new RegExp('/[aeiou]/gi')
+var vowels = /[aeiou]/gi;
 const vowelDots = function(str){
-    return str.replaceAll('/[aeiou]/gi', (match => match + '.'))
+    return str.replace(/[aeiou]{1}/gi, function(match){
+        return match + '.'
+    })
 }
+
+// console.log(vowelDots('aalkefuiff'))
