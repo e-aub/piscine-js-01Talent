@@ -5,7 +5,7 @@ const pyramid = function(charachter, depth){
     let rightSpaces = depth-1 
     while(i > 0){
         result += ' '.repeat(rightSpaces)
-        result += count == 1 ? charachter.repeat(count) : charachter.repeat(count*2)
+        result += count == 1 ? charachter : charachter.repeat((count*2)-1)
         if(i != 1){
             result += '\n'
         }
@@ -15,3 +15,5 @@ const pyramid = function(charachter, depth){
     }
     return result
 }
+
+console.log(pyramid('a', 5))
