@@ -1,3 +1,5 @@
+const add4 = '+4'
+const mul2 = '*2'
 const findExpression = function(number){
     if (number % 2 !== 0) return undefined;
     var n = 1
@@ -8,8 +10,12 @@ const findExpression = function(number){
             res += ' ' + mul2
         }else{
             n += 4
+            if(n+4 <= number){
             res += ' '+add4 
+            }
         }
     }
     return res
 }
+
+console.log(findExpression(14))
