@@ -1,5 +1,5 @@
 const ionOut = function(str){
-    const regex = /([\w]*t+[\w]*)(ion)/
+    const regex = /([t]+[\w]+)(ion)/
     str = str.split(/[ ,.!?:;]/)
     var result = new Array
     for(let i = 0; i < str.length;i++){
