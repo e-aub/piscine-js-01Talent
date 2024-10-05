@@ -1,32 +1,30 @@
-
-const getURL = function (dataSet) {
-    const urlRegex = /https?:\/\/(?:www\.)?[a-zA-Z0-9@:%._\+=~#-]{1,256}(\.[a-zA-Z0-9()]{1,6})?(?:[-A-Za-z0-9()\[\]%,:_@\+\/.~#?=&]*)/g;
-    var matches = dataSet.matchAll(urlRegex);
-    return [...matches].map((match => match[0]))
-    
+const urlExp =
+    /https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}(\.[a-zA-Z0-9()]{1,6})?(?:[-a-zA-Z0-9()\[\],@:%_\+.~#?&\/=]*)/g;
+function getURL(dataSet) {
+    let result = dataSet.match(urlExp);
+    return result;
 }
 
-const greedyQuery = function(dataSet){
-   var urls = getURL(dataSet);
-   var parameter = new RegExp(/\?([^&=]+=[^&]*){1}((\&([^&=]+=[^&]*))|(\&([^&=]+))){1}/g)
-   var result = new Array
-    for(let i = 0; i < urls.length;i++){
-        if(parameter.test(urls[i])){
-            result.push(urls[i])
-        }
-    }
-    return result
+function greedyQuery(dataSet) {
+    dataSet = getURL(dataSet);
+    let result = dataSet.filter((url) => {
+        return (
+            url.match(
+                /\?([-a-zA-Z0-9\[\],()@]*=[-a-zA-Z0-9\[\],()@]*&){2,255}([-a-zA-Z0-9\[\],()@]*=[-a-zA-Z0-9\[\],()@]*)/g
+            ) !== null
+        );
+    });
+    return result;
 }
 
-const notSoGreedy = function(dataSet){
-    var urls = getURL(dataSet);
-    var parameter = new RegExp(/\?([^&=]+=[^&]*){1}((\&([^&=]+=[^&]*))|(\&([^&=]+))){1,2}$/g)
-    var result = new Array
-     for(let i = 0; i < urls.length;i++){
-         if(parameter.test(urls[i])){
-             result.push(urls[i])
-         }
-     }
-     return result
- 
- }
+function notSoGreedy(dataSet) {
+    dataSet = getURL(dataSet);
+    let result = dataSet.filter((url) => {
+        return (
+            url.match(
+                /\?([-a-zA-Z0-9\[\],()@%]*=[-a-zA-Z0-9\[\],()@%]*&){1,2}([-a-zA-Z0-9\[\],()@%]*=[-a-zA-Z0-9\[\],()@%]*)$/g
+            ) !== null
+        );
+    });
+    return result;
+}
