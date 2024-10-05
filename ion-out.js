@@ -4,7 +4,6 @@ const ionOut = function(str){
     var result = new Array
     for(let i = 0; i < str.length;i++){
         var  match = str[i].match(regex)
-        console.log(match)
         if (match !== null){
             result.push(match[1])
         } 
