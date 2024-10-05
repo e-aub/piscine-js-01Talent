@@ -5,14 +5,13 @@ const findExpression = function(number){
     var n = 1
     var res = '1'
     while(n < number){
-        if(n*2 < number){
+        if((n+4) > n*2){
             n*=2
             res += ' ' + mul2
-        }else{
+        }
+        if(n*2 < number){
             n += 4
-            if(n+4 <= number){
             res += ' '+add4 
-            }
         }
     }
     return res

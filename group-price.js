@@ -2,9 +2,10 @@
 const groupPrice = function (str) {
     const price = /(?:\$|USD)(\d+)\.(\d+)/g
 
-    var result = str.matchAll(price)
-    result = Array.from(result)
-    console.log(result)
+    var match = Array.from(str.matchAll(price))
+    var result = new Array;
+    match.filter(element=>{
+        result.push(element.slice(0,4))
+    })
+    return result
 }
-
-groupPrice()
