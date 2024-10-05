@@ -1,5 +1,5 @@
 const ionOut = function(str){
-    const regex = /([t]+[\w]+)(ion)/
+    const regex = /([\wt]+)(ion)/
     str = str.split(/[ ,.!?:;]/)
     var result = new Array
     for(let i = 0; i < str.length;i++){
@@ -10,5 +10,3 @@ const ionOut = function(str){
     }
     return result
 }
-
-console.log(ionOut('promotion, provision'))
