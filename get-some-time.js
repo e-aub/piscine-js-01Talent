@@ -56,7 +56,7 @@ if (year<999){return format(tsltdays+1) +"-"+format((rsltmonth))+"-"+rsltteas}
   
          
   };
-   console.log(firstDayWeek(52, "1000"));
+//    console.log(firstDayWeek(52, "1000"));
 //    console.log(format(3));
 
   
