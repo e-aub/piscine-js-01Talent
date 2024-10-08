@@ -7,7 +7,7 @@ const isValid = function (date) {
     }
     return true;
   };
-  
+
 const isAfter = function(date1, date2){
     if(date1 > date2){
         return true
@@ -24,7 +24,7 @@ const isBefore = function(date1, date2){
 const isFuture = function(date){
     if(isValid(date)){
         var now = Date.now()
-        time = new Date(date)
+        var time = new Date(date)
         if(time > now){
             return true
         }
@@ -35,7 +35,7 @@ const isFuture = function(date){
 const isPast = function(date){
     if(isValid(date)){
         var now = Date.now()
-        time = new Date(date)
+        var time = new Date(date)
         if(time < now){
             return true
         }
