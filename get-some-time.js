@@ -57,7 +57,7 @@ function getDaysInMonth(year, month) {
 if (year<=999){return format(tsltdays+1) +"-"+format((rsltmonth))+"-"+rsltteas}
 
  
-     return   (tsltdays)+"-"+format(rsltmonth)+"-"+rsltteas
+     return   format(tsltdays)+"-"+format(rsltmonth)+"-"+rsltteas
 
   
          
