@@ -36,16 +36,29 @@ function getDaysInMonth(year, month) {
     //   console.log("days",alldays-count-getDayNumber(alldays-count,i+1,year)+1)
     //   console.log(i+1)
     //   console.log(getDayNumber(alldays-count,i+1,year))
+    // console.log("ds",getDayNumber(alldays-count,i+1,year))
+    // console.log("count",count)
+    // console.log("aldays",alldays)
 
-if (year<999){return alldays-count-getDayNumber(alldays-count,i+1,year)+2+"-"+(i+1)+"-"+year}
+
+    let tsltdays=  1+alldays-count-getDayNumber(alldays-count,i+1,year+1)
+    let rsltmonth=i+1
+    let rsltteas=year
 
  
-     return format(alldays-count-getDayNumber(alldays-count,i+1,year)+1)+"-"+format((i+1))+"-"+year
+    
+
+if (year<999){return tsltdays+1 +"-"+format((rsltmonth))+"-"+rsltteas}
+
+ 
+     return  tsltdays+"-"+format(rsltmonth)+"-"+rsltteas
 
   
          
   };
-//    console.log(firstDayWeek(2, "2017"));
+//    console.log(firstDayWeek(1, "1000"));
+//    console.log(format(3));
+
   
 function format(nbr){
     if (nbr<10){
