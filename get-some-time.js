@@ -25,7 +25,7 @@ function getDaysInMonth(year, month) {
    let alldays=(week*7)-6
     let days =(week*7)-6
     let i = 0;
-    count=0
+    let count=0
     while (days - getDaysInMonth(year, i) > 0) {
         count+=getDaysInMonth(year,i)
         days=days - getDaysInMonth(year, i)
