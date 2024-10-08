@@ -39,11 +39,19 @@ function getDaysInMonth(year, month) {
 
 if (year<999){return alldays-count-getDayNumber(alldays-count,i+1,year)+2+"-"+(i+1)+"-"+year}
 
-
-     return alldays-count-getDayNumber(alldays-count,i+1,year)+1+"-"+(i+1)+"-"+year
-
  
-     
-  };
-   console.log(firstDayWeek(2, "2017"));
+     return format(alldays-count-getDayNumber(alldays-count,i+1,year)+1)+"-"+format((i+1))+"-"+year
+
   
+         
+  };
+//    console.log(firstDayWeek(2, "2017"));
+  
+function format(nbr){
+    if (nbr<10){
+        nbr="0"+nbr
+        
+    }
+    return nbr
+}
+
