@@ -41,7 +41,7 @@ function getDaysInMonth(year, month) {
     // console.log("aldays",alldays)
 
 
-    let tsltdays=  1+alldays-count-getDayNumber(alldays-count,i+1,year+1)
+    let tsltdays=  1+alldays-count-getDayNumber(alldays-count,i+1,year)
     let rsltmonth=i+1
     let rsltteas=year
 
@@ -56,7 +56,7 @@ if (year<999){return format(tsltdays+1) +"-"+format((rsltmonth))+"-"+rsltteas}
   
          
   };
-//    console.log(firstDayWeek(1, "1000"));
+   console.log(firstDayWeek(52, "1000"));
 //    console.log(format(3));
 
   
