@@ -21,7 +21,7 @@ function getDaysInMonth(year, month) {
   }
   
  
-  const test = function (week, year) {
+  const firstDayWeek = function (week, year) {
    let alldays=(week*7)-6
     let days =(week*7)-6
     let i = 0;
