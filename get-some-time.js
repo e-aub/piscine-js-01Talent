@@ -1,5 +1,7 @@
 function getDaysInMonth(year, month) {
     const date = new Date(year, month + 1, 0);
+    date.setFullYear(year, month + 1, 0); // Use setFullYear for years < 1000
+
     return date.getDate()
   }
 
@@ -35,13 +37,13 @@ function getDaysInMonth(year, month) {
     //   console.log(i+1)
     //   console.log(getDayNumber(alldays-count,i+1,year))
 
-
+if (year<999){return alldays-count-getDayNumber(alldays-count,i+1,year)+2+"-"+(i+1)+"-"+year}
 
 
      return alldays-count-getDayNumber(alldays-count,i+1,year)+1+"-"+(i+1)+"-"+year
 
  
-
+     
   };
-//   console.log(test(2, 2017));
+   console.log(firstDayWeek(2, "2017"));
   
