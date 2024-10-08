@@ -7,7 +7,7 @@ const addWeek = function (date) {
         return dayNames[day]
     } else {
         day = day-7
-        return "Second" + dayNames[day]
+        return "second" + dayNames[day]
     }
 
 }
@@ -15,3 +15,4 @@ const addWeek = function (date) {
 const timeTravel = function(dates){
     return  new Date(dates.date.setHours(dates.hour,dates.minute, dates.second))
 }
+// console.log(addWeek(new Date('0001-01-08')))
