@@ -1,11 +1,14 @@
-const isValid = function(date){
+const isValid = function (date) {
     date = new Date(date);
-    if(!Number.isNaN(date)){
-        return true
+    if (
+      date.toString() !== 'Invalid Date' &&
+      !Number.isNaN(date) &&
+      date instanceof Date
+    ) {
+      return true;
     }
-    return false
-}
-
+    return false;
+  };
 const isAfter = function(date1, date2){
     if(date1 > date2){
         return true
