@@ -22,7 +22,7 @@ function getDaysInMonth(year, month) {
   
  
   const test = function (week, year) {
-    alldays=(week*7)-6
+   let alldays=(week*7)-6
     let days =(week*7)-6
     let i = 0;
     count=0
@@ -31,12 +31,17 @@ function getDaysInMonth(year, month) {
         days=days - getDaysInMonth(year, i)
         i++;
      }
-      console.log("days",alldays-count)
-      console.log(getDayNumber(1,1,100,))
+    //   console.log("days",alldays-count-getDayNumber(alldays-count,i+1,year)+1)
+    //   console.log(i+1)
+    //   console.log(getDayNumber(alldays-count,i+1,year))
 
+
+
+
+     return alldays-count-getDayNumber(alldays-count,i+1,year)+1+"-"+(i+1)+"-"+year
 
  
 
   };
-  console.log(test(1, '1000'));
+//   console.log(test(2, 2017));
   
