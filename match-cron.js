@@ -1,5 +1,5 @@
 const matchCron = function (cron, date) {
-    dateDetailes = [
+    date = [
         date.getMinutes(),
         date.getHours(),
         date.getDate(),
@@ -7,9 +7,9 @@ const matchCron = function (cron, date) {
         date.getDay()
     ]
     cron = cron.split(' ')
-    console.log(cron, '\n', dateDetailes)
+    console.log(cron, '\n', date)
     for (let i = 0; i < cron.length; i++) {
-        if (cron[i] !== '*' && cron[i] !== dateDetailes[i].toString()) {
+        if (cron[i] !== '*' && cron[i] !== date[i].toString()) {
             return false
         }
     }
