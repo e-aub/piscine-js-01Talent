@@ -9,7 +9,7 @@ const upperCasingStates = function (array) {
 const fahrenheitToCelsius = function (FTempratures) {
     return FTempratures.map(ftemp => {
         const numeric = parseFloat((ftemp.replace(/\s+/g, '').slice(0, ftemp.length - 2)))
-        return Math.round((numeric - 32) * 5 / 9) + '°C'
+        return Math.floor((numeric - 32) * 5 / 9) + '°C'
     })
 
 }
