@@ -14,15 +14,10 @@ const isWeekend = function(date){
 }
 
 
-const isLeapYear= function(date){
-    let year = date.getYear()
-    if(year % 4 === 0){
-        return true
-    }else if( year%4 === 0 && year %100 ===0&& year %400 === 0){
-        return true
-    }
-    return false
+const isLeapYear= function(year){
+    return (year%4 === 0 && year %100 !==0) || (year %400 === 0)
 }
+
 
 const isLastDayOfMonth = function(date){
     let day = date.getDate()
