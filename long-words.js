@@ -8,5 +8,5 @@ const oneLongWord = function(array){
 }
 
 const noLongWords = function(array){
-    return !array.every(str => str.length >= 7)
+    return !array.some(str => str.length >= 7)
 }
