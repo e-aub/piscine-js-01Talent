@@ -9,9 +9,5 @@ const map = function(array, func){
 
 const flatMap = function(array, func){
     var mapped = map(array, func)
-    var result = []
-    for(let element of mapped){
-        result.concat(element)
-    } 
-    return result
+    return [].concat(...mapped)
 }
