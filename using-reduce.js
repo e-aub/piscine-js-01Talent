@@ -18,7 +18,7 @@ const sumOrMul = function(array, initialAcc = 0){
 
 const funcExec = function(array, initialAcc = 0){
     return array.reduce((acc, func) => {
-        acc += func(acc)
+        acc += func(initialAcc)
         return acc
     }, initialAcc)
 }
