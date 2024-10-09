@@ -28,11 +28,11 @@ const filter1DistinctVowel = function (array) {
 }
 
 const multiFilter = function (array) {
-    return array.reduce((acc, obj) => {
-        if (obj.capital.length >= 8 &&
+    return array.filter(obj => {
+        return (obj.capital.length >= 8 &&
             !/^[aeiou]/i.test(obj.name) &&
             /[aeiou]/i.test(obj.tag) &&
-            obj.region !== 'South') {acc.push(obj)}
-            return acc
-        }, [])
-}
+            obj.region !== 'South')
+        }
+    )
+    }
