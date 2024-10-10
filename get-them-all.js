@@ -7,22 +7,9 @@ export function getClassical(){
 }
 
 export function getActive(){
-    var archeticts = getClassical()[0]
-    var active = []
-    var inactive = []
-    for(let i = 0; i < archeticts.length;i++){
-        if(archeticts[i].classList.contains('active')){
-            active.push(archeticts[i])
-        }else{
-            inactive.push(archeticts[i])
-        }
-    }
-    return [active, inactive]
+    return [document.querySelectorAll('a.classical.active'), document.querySelectorAll('a.classical:not(.active)')]
 }
 
 export function getBonannoPisano(){
-    var activeArcheticts = getActive();
-
-    var remaining =  activeArcheticts.filter(archetict => {return archetict.id != 'BonannoPisano'})
-    return [document.getElementById('BonannoPisano'), remaining]
+    return [document.getElementById('BonannoPisano'), document.querySelectorAll('a.classical.active')]
 }
