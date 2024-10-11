@@ -14,10 +14,10 @@ export function createCircle(event) {
 
     let boxRect = box.getBoundingClientRect();
         if (
-            x >= boxRect.left &&
-            x + circle.offsetWidth <= boxRect.right &&
-            y >= boxRect.top &&
-            y + circle.offsetHeight <= boxRect.bottom
+            x > boxRect.left + circle.offsetWidth&&
+            x  < boxRect.right -circle.offsetWidth &&
+            y > boxRect.top + circle.offsetHeight&&
+            y  < boxRect.bottom - circle.offsetHeight
         ) {
            circle.style.backgroundColor = 'var(--purple)'
         }else{
