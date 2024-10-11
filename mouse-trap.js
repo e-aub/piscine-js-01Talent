@@ -62,10 +62,10 @@ export function moveCircle(event) {
         lastCircle.style.top = `${y}px`;
 
         if (
-            x >= boxRect.left &&
-            x + lastCircle.offsetWidth <= boxRect.right &&
-            y >= boxRect.top &&
-            y + lastCircle.offsetHeight <= boxRect.bottom
+            x > boxRect.left + lastCircle.offsetWidth&&
+            x  < boxRect.right -lastCircle.offsetWidth &&
+            y > boxRect.top + lastCircle.offsetHeight&&
+            y  < boxRect.bottom - lastCircle.offsetHeight
         ) {
             isInsideBox = true;
             lastCircle.style.backgroundColor = 'var(--purple)';
