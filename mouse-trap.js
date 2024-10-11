@@ -10,10 +10,22 @@ export function createCircle(event) {
     const x = event.clientX;
     const y = event.clientY;
     let circle = document.createElement('div');
-    circle.style.backgroundColor = 'white';
+    let box = document.querySelector('.box');
+
+    let boxRect = box.getBoundingClientRect();
+        if (
+            x >= boxRect.left &&
+            x + circle.offsetWidth <= boxRect.right &&
+            y >= boxRect.top &&
+            y + circle.offsetHeight <= boxRect.bottom
+        ) {
+           circle.style.backgroundColor = 'var(--purple)'
+        }else{
+           circle.style.backgroundColor = 'white'
+        }
     circle.style.position = 'absolute'
-    circle.style.left = `${x-25}px`;
-    circle.style.top = `${y-25}px`;
+    circle.style.left = `${x - 25}px`;
+    circle.style.top = `${y - 25}px`;
     circle.classList.add('circle');
     document.body.appendChild(circle)
     isInsideBox = false
@@ -22,7 +34,7 @@ export function createCircle(event) {
 export function moveCircle(event) {
     let circles = document.getElementsByClassName('circle');
     if (circles.length === 0) return;
-    
+
     var lastCircle = circles[circles.length - 1];
     const halfsize = lastCircle.offsetWidth / 2;
     let box = document.querySelector('.box');
@@ -35,11 +47,11 @@ export function moveCircle(event) {
         if (x < boxRect.left) {
             x = boxRect.left;
         } else if (x > boxRect.right - lastCircle.offsetWidth) {
-            x = boxRect.right - lastCircle.offsetWidth; 
+            x = boxRect.right - lastCircle.offsetWidth;
         }
-    
+
         if (y < boxRect.top) {
-            y = boxRect.top; 
+            y = boxRect.top;
         } else if (y > boxRect.bottom - lastCircle.offsetHeight) {
             y = boxRect.bottom - lastCircle.offsetHeight;
         }
