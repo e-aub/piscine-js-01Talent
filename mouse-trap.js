@@ -18,9 +18,9 @@ function createCircle(event) {
     circle.style.left = `${x}px`;
     circle.style.top = `${y}px`;
     if (isInsideBox) {
-    circle.style.backgroundColor = 'var(--purple)'; 
+    circle.style.background = 'var(--purple)'; 
     } else {
-        circle.style.backgroundColor = 'white';
+        circle.style.background = 'white';
 
     }
     circle.classList.add('circle');
@@ -40,7 +40,7 @@ function moveCircle(event) {
     if (isInsideBox) {
         let constrainedX = Math.max(boxRect.left, Math.min(x, boxRect.right - lastCircle.offsetWidth));
         let constrainedY = Math.max(boxRect.top, Math.min(y, boxRect.bottom - lastCircle.offsetHeight));
-        lastCircle.style.backgroundColor = 'var(--purple)';
+        lastCircle.style.background = 'var(--purple)';
 
         lastCircle.style.left = `${constrainedX}px`;
         lastCircle.style.top = `${constrainedY}px`;
