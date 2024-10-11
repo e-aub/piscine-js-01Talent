@@ -8,8 +8,8 @@ export function pimp() {
         classList.add(styles[counter])
         counter++
     }else{
-        classList.remove(styles[counter])
         counter--
+        classList.remove(styles[counter])
         if (counter === 0){
             button.classList.toggle('unpimp')
         }
