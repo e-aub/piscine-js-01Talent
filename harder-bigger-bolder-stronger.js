@@ -12,8 +12,10 @@ export function generateLetters() {
         element.style.fontWeight = String(fontWeight)
         body.appendChild(element)
         fontSize++
-        if (i === 40 || i === 80) {
+        if (i === 40) {
             fontWeight += 100
+        } else if (i === 80) {
+            fontWeight += 200
         }
     }
 }
