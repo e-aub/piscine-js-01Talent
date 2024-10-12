@@ -23,12 +23,12 @@ function explore() {
     for (let i = 0; i < places.length; i++) {
         const imageUrl = './where-do-we-go_images/' + (places[i].name.split(', ')[0].replace(/\s+/g, '-').toLocaleLowerCase()) + '.jpg'
         const section = document.createElement('section')
+        section.style.background = `url('${imageUrl}')`
         section.style.height = '100vh'
         section.style.width = '100%'
         section.style.backgroundSize = "cover"
         section.style.backgroundPosition = "center";
         section.style.backgroundRepeat = "no-repeat";
-        section.style.background = `url('${imageUrl}')`
         document.body.appendChild(section)
     }
 
@@ -37,6 +37,9 @@ function explore() {
     document.body.append(compass)
 
     let locationIndicator = document.createElement('a')
+    locationIndicator.textContent = `Skafta River, Iceland\n63°39'47.7"N 17°47'57.9"W`
+    locationIndicator.setAttribute('target', "_blank")
+    locationIndicator.setAttribute('href', `https://google.com/maps/place/${places[0].coordinates}`)
     locationIndicator.classList.add('location')
     document.body.append(locationIndicator)
 
@@ -52,8 +55,7 @@ function explore() {
             const sectionTop = section.offsetTop;
             const sectionBottom = sectionTop + section.offsetHeight;
             if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                locationIndicator.innerText = `${places[i].name}\n${places[i].coordinates}`
-                locationIndicator.setAttribute('target', "_blank")
+                locationIndicator.textContent = `${places[i].name}\n${places[i].coordinates}`
                 locationIndicator.setAttribute('href', `https://google.com/maps/place/${places[i].coordinates}`)
 
                 locationIndicator.style.color = places[i].color
