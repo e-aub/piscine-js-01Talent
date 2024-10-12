@@ -19,7 +19,7 @@ function explore() {
         const bLatitude = degreeToDecimal(b.coordinates.split(' ')[0]);
         return bLatitude - aLatitude
     });
-    
+
     for (let i = 0; i < places.length; i++) {
         const imageUrl = './where-do-we-go_images/' + (places[i].name.split(', ')[0].replace(/\s+/g, '-').toLocaleLowerCase()) + '.jpg'
         const section = document.createElement('section')
@@ -28,7 +28,7 @@ function explore() {
 
         document.body.appendChild(section)
         const img = document.createElement('img')
-        img.setAttribute('src', imageUrl)
+        img.style.background = `url('${imageUrl}')`
         img.style.height = '100%'
         img.style.width = '100%'
         section.append(img)
