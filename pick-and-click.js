@@ -35,15 +35,15 @@ function pick() {
         y = event.clientY;
 
 
-        xLine.setAttribute('x1', 0);
-        xLine.setAttribute('y1', y);
-        xLine.setAttribute('x2', width);
-        xLine.setAttribute('y2', y);
+        xLine.setAttribute('x1', `${0}`);
+        xLine.setAttribute('y1', `${y}`);
+        xLine.setAttribute('x2', `${width}`);
+        xLine.setAttribute('y2', `${y}`);
 
-        yLine.setAttribute('x1', x);
-        yLine.setAttribute('y1', 0)
-        yLine.setAttribute("x2", x);
-        yLine.setAttribute("y2", height);
+        yLine.setAttribute('x1', `${x}`);
+        yLine.setAttribute('y1', `${0}`)
+        yLine.setAttribute("x2", `${x}`);
+        yLine.setAttribute("y2", `${height}`);
 
         const hsl = calculateHsl(x, y, height, width)
 
@@ -57,6 +57,7 @@ function pick() {
     })
 
     document.addEventListener('click', (event) => {
+        event.preventDefault();
         document.execCommand('copy');
     })
 
