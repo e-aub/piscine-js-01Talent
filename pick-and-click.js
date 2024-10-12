@@ -1,7 +1,7 @@
-let x = 0;
-let y = 0;
-let height = 0;
-let width = 0;
+let x = '0';
+let y = '0';
+let height = '0';
+let width = '0';
 function pick() {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute('width', '100%')
@@ -35,13 +35,13 @@ function pick() {
         y = event.clientY;
 
 
-        xLine.setAttribute('x1', `${0}`);
+        xLine.setAttribute('x1', `0`);
         xLine.setAttribute('y1', `${y}`);
         xLine.setAttribute('x2', `${width}`);
         xLine.setAttribute('y2', `${y}`);
 
         yLine.setAttribute('x1', `${x}`);
-        yLine.setAttribute('y1', `${0}`)
+        yLine.setAttribute('y1', `0`)
         yLine.setAttribute("x2", `${x}`);
         yLine.setAttribute("y2", `${height}`);
 
