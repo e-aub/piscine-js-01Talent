@@ -49,8 +49,8 @@ function pick() {
 
         document.body.style.background = hsl
         hslDiv.innerText = hsl
-        hueDiv.innerText = `hue\n${hsl.match(/\d+%/g)[1]}`
-        luminosityDiv.innerText = `luminosity\n${hsl.match(/\d+%/g)[1]}`
+        hueDiv.innerText = `${hsl.match(/\d+/g)[0]}`
+        luminosityDiv.innerText = `${hsl.match(/\d+/g)[2]}`
 
 
 
