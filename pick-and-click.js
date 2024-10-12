@@ -4,15 +4,15 @@ let height = '0';
 let width = '0';
 function pick() {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute('width', '100%')
-    svg.setAttribute('height', '100%')
+    svg.setAttributeNS(null,'width', '100%')
+    svg.setAttributeNS(null,'height', '100%')
     document.body.appendChild(svg);
     const xLine = document.createElementNS("http://www.w3.org/2000/svg", 'line');
-    xLine.setAttribute('id', 'axisX')
+    xLine.setAttributeNS(null,'id', 'axisX')
     svg.appendChild(xLine);
 
     const yLine = document.createElementNS("http://www.w3.org/2000/svg", 'line');
-    yLine.setAttribute('id', 'axisY')
+    yLine.setAttributeNS(null,'id', 'axisY')
 
     svg.appendChild(yLine);
 
@@ -35,15 +35,15 @@ function pick() {
         y = event.clientY;
 
 
-        xLine.setAttribute('x1', `0`);
-        xLine.setAttribute('y1', `${y}`);
-        xLine.setAttribute('x2', `${width}`);
-        xLine.setAttribute('y2', `${y}`);
+        xLine.setAttributeNS(null,'x1', `0`);
+        xLine.setAttributeNS(null,'y1', `${y}`);
+        xLine.setAttributeNS(null,'x2', `${width}`);
+        xLine.setAttributeNS(null,'y2', `${y}`);
 
-        yLine.setAttribute('x1', `${x}`);
-        yLine.setAttribute('y1', `0`)
-        yLine.setAttribute("x2", `${x}`);
-        yLine.setAttribute("y2", `${height}`);
+        yLine.setAttributeNS(null,'x1', `${x}`);
+        yLine.setAttributeNS(null,'y1', `0`)
+        yLine.setAttributeNS(null,"x2", `${x}`);
+        yLine.setAttributeNS(null,"y2", `${height}`);
 
         const hsl = calculateHsl(x, y, height, width)
 
