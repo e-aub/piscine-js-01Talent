@@ -1,7 +1,7 @@
-let x = '0';
-let y = '0';
-let height = '0';
-let width = '0';
+let x = 0;
+let y = 0;
+let height = 0;
+let width = 0;
 
 document.addEventListener('click', (event) => {
     event.preventDefault();
@@ -28,14 +28,14 @@ document.addEventListener('mousemove', (event) => {
 
 
     xLine.setAttributeNS(null,'x1', 0);
-    xLine.setAttributeNS(null,'y1', y);
     xLine.setAttributeNS(null,'x2', width);
+    xLine.setAttributeNS(null,'y1', y);
     xLine.setAttributeNS(null,'y2', y);
 
-    yLine.setAttributeNS(null,'x1', x);
     yLine.setAttributeNS(null,'y1', 0)
-    yLine.setAttributeNS(null,"x2", x);
     yLine.setAttributeNS(null,"y2", height);
+    yLine.setAttributeNS(null,'x1', x);
+    yLine.setAttributeNS(null,"x2", x);
 
     const hsl = calculateHsl(x, y, height, width)
 
@@ -52,20 +52,20 @@ function pick() {
     document.body.appendChild(svg);
     const xLine = document.createElementNS("http://www.w3.org/2000/svg", 'line');
     xLine.setAttribute('id', 'axisX')
-    xLine.setAttribute('x1', '0');
-    xLine.setAttribute('y1', '0');
-    xLine.setAttribute('x2', '100%');
-    xLine.setAttribute('y2', '0');
+    xLine.setAttribute('x1', 0);
+    xLine.setAttribute('y1', 0);
+    xLine.setAttribute('x2', 0);
+    xLine.setAttribute('y2', 0);
 
   
     svg.appendChild(xLine);
 
     const yLine = document.createElementNS("http://www.w3.org/2000/svg", 'line');
     yLine.setAttribute('id', 'axisY')
-    yLine.setAttribute('x1', '0');
-    yLine.setAttribute('y1', '0')
-    yLine.setAttribute("x2", '100%');
-    yLine.setAttribute("y2", '0');
+    yLine.setAttribute('x1', 0);
+    yLine.setAttribute('y1', 0)
+    yLine.setAttribute("x2", 0);
+    yLine.setAttribute("y2", 0);
     svg.appendChild(yLine);
 
     const hslDiv = document.createElement('div');
