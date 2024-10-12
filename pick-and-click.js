@@ -9,20 +9,20 @@ function pick() {
     document.body.appendChild(svg);
     const xLine = document.createElementNS("http://www.w3.org/2000/svg", 'line');
     xLine.setAttribute('id', 'axisX')
-    xLine.setAttribute('x1', 0);
-    xLine.setAttribute('y1', 0);
-    xLine.setAttribute('x2', 0);
-    xLine.setAttribute('y2', 0);
+    xLine.setAttribute('x1', '0');
+    xLine.setAttribute('y1', '0');
+    xLine.setAttribute('x2', '100%');
+    xLine.setAttribute('y2', '0');
 
   
     svg.appendChild(xLine);
 
     const yLine = document.createElementNS("http://www.w3.org/2000/svg", 'line');
     yLine.setAttribute('id', 'axisY')
-    yLine.setAttribute('x1', 0);
-    yLine.setAttribute('y1', 0)
-    yLine.setAttribute("x2", 0);
-    yLine.setAttribute("y2", 0);
+    yLine.setAttribute('x1', '0');
+    yLine.setAttribute('y1', '0')
+    yLine.setAttribute("x2", '100%');
+    yLine.setAttribute("y2", '0');
     svg.appendChild(yLine);
 
     const hslDiv = document.createElement('div');
