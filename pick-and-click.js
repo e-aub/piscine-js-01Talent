@@ -2,6 +2,49 @@ let x = '0';
 let y = '0';
 let height = '0';
 let width = '0';
+
+document.addEventListener('click', (event) => {
+    event.preventDefault();
+    document.execCommand('copy');
+})
+
+document.addEventListener('copy', (event) => {
+    event.preventDefault();
+    const hsl = calculateHsl(x, y, height, width)
+    event.clipboardData.setData('text/plain', hsl)
+})
+
+document.addEventListener('mousemove', (event) => {
+    height = window.innerHeight;
+    width = window.innerWidth;
+    x = event.clientX;
+    y = event.clientY;
+    var lines = document.getElementsByTagName('line')
+    const xLine = lines[0];
+    const yLine = lines[1];
+    const hslDiv = document.getElementsByClassName('hsl')[0]
+    const hueDiv = document.getElementsByClassName('hue')[0]
+    const luminosityDiv = document.getElementsByClassName('luminosity')[0]
+
+
+    xLine.setAttributeNS(null,'x1', 0);
+    xLine.setAttributeNS(null,'y1', y);
+    xLine.setAttributeNS(null,'x2', width);
+    xLine.setAttributeNS(null,'y2', y);
+
+    yLine.setAttributeNS(null,'x1', x);
+    yLine.setAttributeNS(null,'y1', 0)
+    yLine.setAttributeNS(null,"x2", x);
+    yLine.setAttributeNS(null,"y2", height);
+
+    const hsl = calculateHsl(x, y, height, width)
+
+    document.body.style.background = hsl
+    hslDiv.innerText = hsl
+    hueDiv.innerText = `${hsl.match(/\d+/g)[0]}`
+    luminosityDiv.innerText = `${hsl.match(/\d+/g)[2]}`
+
+})
 function pick() {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute('width', '100%')
@@ -36,45 +79,6 @@ function pick() {
     const luminosityDiv = document.createElement('div')
     luminosityDiv.classList.add('luminosity', 'text');
     document.body.appendChild(luminosityDiv);
-
-    document.addEventListener('mousemove', (event) => {
-        height = window.innerHeight;
-        width = window.innerWidth;
-        x = event.clientX;
-        y = event.clientY;
-
-
-        xLine.setAttributeNS(null,'x1', 0);
-        xLine.setAttributeNS(null,'y1', y);
-        xLine.setAttributeNS(null,'x2', width);
-        xLine.setAttributeNS(null,'y2', y);
-
-        yLine.setAttributeNS(null,'x1', x);
-        yLine.setAttributeNS(null,'y1', 0)
-        yLine.setAttributeNS(null,"x2", x);
-        yLine.setAttributeNS(null,"y2", height);
-
-        const hsl = calculateHsl(x, y, height, width)
-
-        document.body.style.background = hsl
-        hslDiv.innerText = hsl
-        hueDiv.innerText = `${hsl.match(/\d+/g)[0]}`
-        luminosityDiv.innerText = `${hsl.match(/\d+/g)[2]}`
-
-
-
-    })
-
-    document.addEventListener('click', (event) => {
-        event.preventDefault();
-        document.execCommand('copy');
-    })
-
-    document.addEventListener('copy', (event) => {
-        event.preventDefault();
-        const hsl = calculateHsl(x, y, height, width)
-        event.clipboardData.setData('text/plain', hsl)
-    })
 }
 
 
