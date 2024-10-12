@@ -1,6 +1,6 @@
 import { places } from './where-do-we-go.data.js'
 
-let scrollY = 0 
+let scrollY = 0
 
 
 function degreeToDecimal(latitude) {
@@ -25,6 +25,10 @@ function explore() {
         const section = document.createElement('section')
         section.style.height = '100vh'
         section.style.width = '100%'
+        section.style.backgroundSize = "cover"
+        section.style.backgroundPosition = "center";
+        section.style.backgroundRepeat = "no-repeat";
+
 
         document.body.appendChild(section)
         const img = document.createElement('img')
@@ -42,19 +46,22 @@ function explore() {
     locationIndicator.classList.add('location')
     document.body.append(locationIndicator)
 
-    window.addEventListener('scroll', () =>{
-        if(scrollY < window.scrollY){
+    window.addEventListener('scroll', () => {
+        if (scrollY < window.scrollY) {
             compass.innerText = 'S'
-        }else if (scrollY > window.scrollY){
+        } else if (scrollY > window.scrollY) {
             compass.innerText = 'N'
         }
         scrollY = window.scrollY
-        const scrollPosition = window.scrollY + window.innerHeight /2;
-        document.querySelectorAll('section').forEach((section, i)=>{
+        const scrollPosition = window.scrollY + window.innerHeight / 2;
+        document.querySelectorAll('section').forEach((section, i) => {
             const sectionTop = section.offsetTop;
-            const sectionBottom  = sectionTop + section.offsetHeight;
-            if(scrollPosition >= sectionTop && scrollPosition < sectionBottom){
+            const sectionBottom = sectionTop + section.offsetHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
                 locationIndicator.innerText = `${places[i].name}\n${places[i].coordinates}`
+                locationIndicator.setAttribute('target', "_blank")
+                locationIndicator.setAttribute('href', `https://google.com/maps/place/${places[i].coordinates}`)
+
                 locationIndicator.style.color = places[i].color
             }
         })
