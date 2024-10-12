@@ -44,15 +44,15 @@ function pick() {
         y = event.clientY;
 
 
-        xLine.setAttributeNS(null,'x1', `0`);
-        xLine.setAttributeNS(null,'y1', `${y}`);
-        xLine.setAttributeNS(null,'x2', `${width}`);
-        xLine.setAttributeNS(null,'y2', `${y}`);
+        xLine.setAttributeNS(null,'x1', 0);
+        xLine.setAttributeNS(null,'y1', y);
+        xLine.setAttributeNS(null,'x2', width);
+        xLine.setAttributeNS(null,'y2', y);
 
-        yLine.setAttributeNS(null,'x1', `${x}`);
-        yLine.setAttributeNS(null,'y1', `0`)
-        yLine.setAttributeNS(null,"x2", `${x}`);
-        yLine.setAttributeNS(null,"y2", `${height}`);
+        yLine.setAttributeNS(null,'x1', x);
+        yLine.setAttributeNS(null,'y1', 0)
+        yLine.setAttributeNS(null,"x2", x);
+        yLine.setAttributeNS(null,"y2", height);
 
         const hsl = calculateHsl(x, y, height, width)
 
