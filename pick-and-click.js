@@ -4,15 +4,15 @@ let height = '0';
 let width = '0';
 function pick() {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttributeNS(null,'width', '100%')
-    svg.setAttributeNS(null,'height', '100%')
+    svg.setAttribute('width', '100%')
+    svg.setAttribute('height', '100%')
     document.body.appendChild(svg);
     const xLine = document.createElementNS("http://www.w3.org/2000/svg", 'line');
-    xLine.setAttributeNS(null,'id', 'axisX')
+    xLine.setAttribute('id', 'axisX')
     svg.appendChild(xLine);
 
     const yLine = document.createElementNS("http://www.w3.org/2000/svg", 'line');
-    yLine.setAttributeNS(null,'id', 'axisY')
+    yLine.setAttribute('id', 'axisY')
 
     svg.appendChild(yLine);
 
