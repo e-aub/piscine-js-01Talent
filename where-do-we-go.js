@@ -28,14 +28,8 @@ function explore() {
         section.style.backgroundSize = "cover"
         section.style.backgroundPosition = "center";
         section.style.backgroundRepeat = "no-repeat";
-
-
+        section.style.background = `url('${imageUrl}')`
         document.body.appendChild(section)
-        const img = document.createElement('img')
-        img.style.background = `url('${imageUrl}')`
-        img.style.height = '100%'
-        img.style.width = '100%'
-        section.append(img)
     }
 
     let compass = document.createElement('div');
@@ -66,7 +60,10 @@ function explore() {
             }
         })
     })
+console.log(document.getElementsByTagName('section').length)
+
 }
+
 
 
 export { explore }
