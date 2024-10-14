@@ -6,7 +6,7 @@ const pick = function (object, strs) {
     let result = {}
     for (let i = 0; i < keys.length; i++) {
         if (strs.includes(keys[i])) {
-            if (!object[keys[i]] instanceof undefined && !object[keys[i]] instanceof null) {
+            if (typeof object[keys[i]] !==  "undefined" && typeof object[keys[i]] !==  "null") {
                 result[keys[i]] = object[keys[i]]
             }
         }
@@ -21,7 +21,7 @@ const omit = function (object, strs) {
     let result = {}
     for (let i = 0; i < keys.length; i++) {
         if (!strs.includes(keys[i])) {
-            if (!object[keys[i]] instanceof undefined && !object[keys[i]] instanceof null) {
+            if (typeof object[keys[i]] !==  "undefined" && typeof object[keys[i]] !==  "null") {
                 result[keys[i]] = object[keys[i]]
             }
         }
