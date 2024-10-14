@@ -11,6 +11,7 @@ const pick = function (object, strs) {
             }
         }
     }
+    return result
 }
 
 const omit = function (object, strs) {
@@ -26,4 +27,7 @@ const omit = function (object, strs) {
             }
         }
     }
+    return result
 }
+
+console.log(pick({ firstName: 'James', lastName: 'Bond' },  ['firstName', 'lastName']))
