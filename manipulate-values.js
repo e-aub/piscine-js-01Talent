@@ -17,14 +17,13 @@ const mapValues = function(nutrients, func){
     return nutrients
 }
 
-const reduceValues = function(nutrients, func){
+const reduceValues = function(nutrients, func, acc = 0){
     let values = Object.values(nutrients);
-    var acc = 0
     for(let value of values){
         acc = func(acc, value)
     }
     return acc
 }
-const nutrients = { carbohydrates: 12, protein: 20, fat: 5 }
 
-console.log(reduceValues(nutrients, (acc, cr) => acc + cr))
+
+console.log(reduceValues({ a: 1, b: 2, c: 3 }, (acc, cr) => acc + cr, 3))
