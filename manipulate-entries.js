@@ -9,7 +9,7 @@
 //     orange:  { calories: 49,  protein: 0.9,   carbs: 13,    sugar: 9,   fiber: 0.2, fat: 0.1   },
 //   }
 
-//   const groceriesCart = { orange: 500, oil: 20, sugar: 480 }
+//   const groceriesCart = { oil: 500, onion: 230, garlic: 220, paprika: 480 }
 
 
 const filterEntries = function (object, func) {
@@ -33,7 +33,7 @@ function cartTotal(cart) {
     let result = {}
     for (let i = 0; i < keys.length; i++) {
         const key = keys[i];
-        result[key] = mapEntries(nutritionDB[key], ([k, v]) => [k, Math.round((v / 100 * cart[key]) * 10) / 10])
+        result[key] = mapEntries(nutritionDB[key], ([k, v]) => [k, Number((v / 100 * cart[key]).toFixed(3))])
     }
     return result
 }
@@ -54,4 +54,4 @@ function totalCalories(object) {
 
 
 
-// console.log(totalCalories(groceriesCart))
+// console.log(cartTotal(groceriesCart))
