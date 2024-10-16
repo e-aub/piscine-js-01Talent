@@ -32,7 +32,7 @@ const reduceEntries = function (object, func, acc = 0) {
 
 function totalCalories(object) {
     return reduceEntries(object, (acc, entry) =>
-        Math.round((acc + (nutritionDB[entry[0]]['calories'] / 100) * entry[1]) * 10) / 10, 0)
+        Number(((acc + (nutritionDB[entry[0]]['calories'] / 100) * entry[1]))).toFixed(3))
 }
 
 
