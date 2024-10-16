@@ -1,6 +1,6 @@
 function replica(...objects) {
     let result 
-    for(obj of objects){
+    for(let obj of objects){
         result = {...result, ...deepCopy(obj)}
     }
     return result
