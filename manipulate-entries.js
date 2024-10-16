@@ -19,7 +19,7 @@ function cartTotal(cart) {
     let result = {}
     for (let i = 0; i < keys.length; i++) {
         const key = keys[i];
-        result[key] = mapEntries(nutritionDB[key], ([k, v])=>[ k, Math.round((v / 100 * cart[key])*10)/10])
+        result[key] = mapEntries(nutritionDB[key], ([k, v]) => [k, Math.round((v / 100 * cart[key]) * 10) / 10])
     }
     return result
 }
@@ -31,11 +31,9 @@ const reduceEntries = function (object, func, acc = 0) {
 }
 
 function totalCalories(object) {
-    const entries = Object.entries(object)
-    return reduceEntries(entries, (acc, entry) =>
-        acc + (Math.round((nutritionDB[entry[0]].calories / 100) * entry[1])*10)/10, 0)
+    return reduceEntries(object, (acc, entry) =>
+        Math.round((acc + (nutritionDB[entry[0]]['calories'] / 100) * entry[1]) * 10) / 10, 0)
 }
-
 
 
 
