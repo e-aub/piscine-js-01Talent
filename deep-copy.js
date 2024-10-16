@@ -1,5 +1,5 @@
 function deepCopy(obj){
-    if(obj === null || typeof obj === 'function' || typeof obj !== 'object'){
+    if(obj === null || typeof obj === 'function' || obj instanceof RegExp|| typeof obj !== 'object' ){
         return obj
     }
     const copy = Array.isArray(obj) ? [] : {}
@@ -11,3 +11,5 @@ function deepCopy(obj){
         return copy
 }
 
+
+// console.log(deepCopy([console.log, /hello/]))
