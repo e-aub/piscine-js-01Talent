@@ -1,5 +1,5 @@
 function deepCopy(obj){
-    if(obj === null || typeof obj !== 'object'){
+    if(obj === null || typeof obj === 'function' || typeof obj !== 'object'){
         return obj
     }
     const copy = Array.isArray(obj) ? [] : {}
