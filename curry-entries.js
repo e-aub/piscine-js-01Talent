@@ -1,11 +1,12 @@
 function defaultCurry(obj1) {
-    let tmp = obj1;
+    obj1 = {...obj1}
     return function (obj2) {
+        obj2 = {...obj2}
         const keys = Object.keys(obj2);
         for (let key of keys) {
-            tmp[key] = obj2[key]
+            obj1[key] = obj2[key]
         }
-        return tmp
+        return obj1
     }
 }
 
@@ -75,8 +76,8 @@ function mapAverage(personnel){
 
 // console.log(mapCurry(([k, v]) => [`${k}_force`, v])(personnel))
 
-console.log(defaultCurry({
-    http: 403
-  })({
-    http: 200
-  }))
+// console.log(defaultCurry({
+//     http: 403
+//   })({
+//     http: 200
+//   }))
