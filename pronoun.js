@@ -1,6 +1,6 @@
 function pronoun(str) {
     const regex = /\b(i|you|he|she|it|they|we)\b/gi;
-    str = str.split(' ');
+    str = str.split(/\s+/);
     let result = {};
 
     for (let i = 0; i < str.length; i++) {
