@@ -8,10 +8,16 @@ function flags(obj){
     for(let flag of flags){
         result.alias[flag.slice(0,1)] = flag;
     }
-
-    for(let hlp of obj.help){
-        result['description'].push(`-${hlp.slice(0,1)}, --${hlp}: ${obj[hlp]}`)
+    if (Array.isArray(obj.help) && obj['help'].length >= 1){
+        for(let hlp of obj.help){
+            result['description'].push(`-${hlp.slice(0,1)}, --${hlp}: ${obj[hlp]}`)
+        }
+    }else{
+        for(let hlp of flags){
+            result['description'].push(`-${hlp.slice(0,1)}, --${hlp}: ${obj[hlp]}`)
+        }
     }
+   
 
     if (result['description'].length === 1){
         result.description = result.description[0]
@@ -21,7 +27,7 @@ function flags(obj){
 
 
 // console.log(flags({
-//     multiply: 'multiply the values',
-//     divide: 'divides the values',
-//     help: ['divide', 'multiply']
+//     invert: 'inverts and object',
+//     'convert-map': 'converts the object to an array',
+//     assign: 'uses the function assign - assign to target object',
 //   }))
