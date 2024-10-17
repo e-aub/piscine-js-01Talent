@@ -27,9 +27,4 @@ function toSnakeCase(str) {
 }
 
 
-// console.log(neuron([
-//     'Questions: how are you? - Response: well thanks, and you?',
-//     'affirmations: i am fine - Response: cool',
-//     'affirmations: i am fine - Response: awesome',
-//     'Orders: turn on the lights! - Response: done',
-//   ]))
+// console.log(neuron(['Orders: shutdown please! - Response: no!']))
