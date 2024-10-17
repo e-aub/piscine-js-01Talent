@@ -11,7 +11,7 @@ function pronoun(str) {
             result[pronoun].count++;
 
             if (str[i + 1] && !str[i + 1].match(regex)) {
-                result[pronoun].words.push(str[i + 1]);
+                result[pronoun].word.push(str[i + 1]);
             }
         }
     }
