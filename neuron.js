@@ -2,30 +2,19 @@ function neuron(arr) {
     if (!Array.isArray(arr)||arr.length === 0) {
         return {};
     }
-    const questionRegex = /Questions:\s+(?<question>.+?)\s+-\s+Response:\s*(?<response>.+)/i;
-    const orderRegex = /Orders:\s+(?<order>.+?)\s+-\s+Response:\s*(?<response>.+)/i;
+    const questionRegex = /(?<key>.+?):\s+(?<question>.+?)\s+-\s+Response:\s*(?<response>.+)/i;
     var result = {};
     for (let str of arr) {
         let questionMatch = questionRegex.exec(str);
-        let orderMatch = orderRegex.exec(str);
         if (questionMatch) {
-            result.questions ? '' :result.questions = {}
+            result[questionMatch.groups.key] ? '' :result[questionMatch.groups.key] = {}
             const snakeCaseQuestion = toSnakeCase(questionMatch.groups.question)
-            result['questions'][snakeCaseQuestion]
-                ? result['questions'][snakeCaseQuestion]['responses'].push(questionMatch.groups.response)
-                : result['questions'][snakeCaseQuestion] = {
+            result[questionMatch.groups.key][snakeCaseQuestion]
+                ? result[questionMatch.groups.key][snakeCaseQuestion]['responses'].push(questionMatch.groups.response)
+                : result[questionMatch.groups.key][snakeCaseQuestion] = {
                     'question': questionMatch.groups.question, 'responses': [questionMatch.groups.response]
                 }
-        } else if (orderMatch) {
-            result.orders ? '' :result.orders = {}
-            const snakeCaseOrder = toSnakeCase(orderMatch.groups.order);
-            result['orders'][snakeCaseOrder]
-                ? result['orders'][snakeCaseOrder]['responses'].push(orderMatch.groups.response)
-                : result['orders'][snakeCaseOrder] = {
-                    'order': orderMatch.groups.order,
-                    'responses': [orderMatch.groups.response]
-                }
-        }
+            }
     }
     return result
 }
@@ -38,5 +27,9 @@ function toSnakeCase(str) {
 }
 
 
-// console.log(neuron(neuron([]))
-// )
+// console.log(neuron([
+//     'Questions: how are you? - Response: well thanks, and you?',
+//     'affirmations: i am fine - Response: cool',
+//     'affirmations: i am fine - Response: awesome',
+//     'Orders: turn on the lights! - Response: done',
+//   ]))
