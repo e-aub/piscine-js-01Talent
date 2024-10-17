@@ -1,11 +1,15 @@
 function neuron(arr) {
+    if (!Array.isArray(arr)||arr.length === 0) {
+        return {};
+    }
     const questionRegex = /Questions:\s+(?<question>.+?)\s+-\s+Response:\s*(?<response>.+)/i;
     const orderRegex = /Orders:\s+(?<order>.+?)\s+-\s+Response:\s*(?<response>.+)/i;
-    var result = { questions: {}, orders: {} };
+    var result = {};
     for (let str of arr) {
         let questionMatch = questionRegex.exec(str);
         let orderMatch = orderRegex.exec(str);
         if (questionMatch) {
+            result.questions ? '' :result.questions = {}
             const snakeCaseQuestion = toSnakeCase(questionMatch.groups.question)
             result['questions'][snakeCaseQuestion]
                 ? result['questions'][snakeCaseQuestion]['responses'].push(questionMatch.groups.response)
@@ -13,6 +17,7 @@ function neuron(arr) {
                     'question': questionMatch.groups.question, 'responses': [questionMatch.groups.response]
                 }
         } else if (orderMatch) {
+            result.orders ? '' :result.orders = {}
             const snakeCaseOrder = toSnakeCase(orderMatch.groups.order);
             result['orders'][snakeCaseOrder]
                 ? result['orders'][snakeCaseOrder]['responses'].push(orderMatch.groups.response)
@@ -33,11 +38,5 @@ function toSnakeCase(str) {
 }
 
 
-// console.log(neuron([
-//     'Questions: what is ounces? - Response: Ounce, unit of weight in the avoirdupois system',
-//     'Questions: what is ounces? - Response: equal to 1/16 pound (437 1/2 grains)',
-//     'Questions: what is Mud dauber - Response: Mud dauber is a name commonly applied to a number of wasps',
-//     'Orders: shutdown! - Response: Yes Sr!',
-//     'Orders: Quote something! - Response: Pursue what catches your heart, not what catches your eyes.'
-// ])
+// console.log(neuron(neuron([]))
 // )
