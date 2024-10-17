@@ -1,23 +1,20 @@
 function replica(...objects) {
-    let result 
-    for(let obj of objects){
-        result = {...result, ...deepCopy(obj)}
-    }
-    return result
-}
-
-
-function deepCopy(obj){
-    if(obj === null || typeof obj === 'function' || obj instanceof RegExp|| typeof obj !== 'object' ){
-        return obj
-    }
-    const copy = Array.isArray(obj) ? [] : {}
-
-    for(let [key, ] of Object.entries(obj)){
-       copy[key] =  deepCopy(obj[key])
+    const result = {}
+    for (let obj of objects) {
+        if (obj === null || typeof obj !== 'object') {
+            continue
         }
+        for (let [key, value] of Object.entries(obj)) {
+            if (typeof value === 'object') {
+                result[key] = result[key] || {}
+                result[key] = replica(result[key], value)
+            } else {
+                result[key] = value
+            }
 
-        return copy
+        }
+    }
+
+    return result
+
 }
-
-// console.log(replica({ a: { b: { c: [123, 1] } } }, { a: { b: { c: '1' } } }))
