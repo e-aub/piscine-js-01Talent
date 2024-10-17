@@ -9,7 +9,7 @@ function replica(...objects) {
                 result[key] = result[key] || {}
                 result[key] = replica(result[key], value)
             } else {
-                result[key] = value
+                result[key] = {...result[key],...value}
             }
 
         }
@@ -18,3 +18,5 @@ function replica(...objects) {
     return result
 
 }
+
+// console.log(replica({ a: { b: 1, c: 2 } }, { a: { c: 23 } }))
