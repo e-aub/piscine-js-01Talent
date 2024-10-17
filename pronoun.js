@@ -7,7 +7,7 @@ function pronoun(str) {
         let match = str[i].match(regex);
         if (match) {
             const pronoun = match[0]; 
-            result[pronoun] = result[pronoun] || { count: 0, words: [] };
+            result[pronoun] = result[pronoun] || { count: 0, word: [] };
             result[pronoun].count++;
 
             if (str[i + 1] && !str[i + 1].match(regex)) {
