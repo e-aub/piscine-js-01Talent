@@ -21,6 +21,8 @@ function flags(obj){
 
     if (result['description'].length === 1){
         result.description = result.description[0]
+    }else{
+        result.description = result.description.join('\n')
     }
     return result
 }
