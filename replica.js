@@ -16,8 +16,3 @@ function replica(...objects) {
     }
     return result;
 }
-
-// console.log(replica({ line: 'Replicants are like any other machine' }, { author: 'Rich' }));
-// console.log(replica({ a: [1, 2, 4] }, { a: { b: [4] } })); 
-// console.log(replica( { a: { b: 1, c: 2 } }, { a: { c: 23 } }))
-
