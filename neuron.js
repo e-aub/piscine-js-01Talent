@@ -12,7 +12,7 @@ function neuron(arr) {
             result[questionMatch.groups.key][snakeCaseQuestion]
                 ? result[questionMatch.groups.key][snakeCaseQuestion]['responses'].push(questionMatch.groups.response)
                 : result[questionMatch.groups.key][snakeCaseQuestion] = {
-                    'question': questionMatch.groups.question, 'responses': [questionMatch.groups.response]
+                    [questionMatch.groups.key.toLocaleLowerCase().slice(0,questionMatch.groups.key.length-1)] : questionMatch.groups.question, 'responses': [questionMatch.groups.response]
                 }
             }
     }
