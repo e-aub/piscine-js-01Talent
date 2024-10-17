@@ -7,13 +7,12 @@ function neuron(arr) {
     for (let str of arr) {
         const questionMatch = questionRegex.exec(str);
         if (questionMatch) {
-            const key = questionMatch.groups.key
+            const key = questionMatch.groups.key.toLowerCase()
             if (!result[key]) {
                 result[key] = {};
             }
             const snakeCaseQuestion = toSnakeCase(questionMatch.groups.question)
             if (!result[key][snakeCaseQuestion]) {
-                result[key] = {}
                 result[key][snakeCaseQuestion] = {
                     [key.toLowerCase().slice(0, key.length - 1)]: questionMatch.groups.question,
                     'responses': [questionMatch.groups.response]
@@ -32,6 +31,3 @@ function toSnakeCase(str) {
         .replace(/\s+/g, '_')
         .replace(/[^\w_]/g, '')
 }
-
-
-// console.log(neuron(['Orders: shutdown please! - Response: no!']))
