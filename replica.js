@@ -9,7 +9,11 @@ function replica(...objects) {
                 result[key] = result[key] || {}
                 result[key] = replica(result[key], value)
             } else {
-                result[key] = {...result[key],...value}
+                if (typeof result[key] === 'object') {
+                    result[key] = { ...result[key], ...value }
+                }else{
+                    result[key] = value
+                }
             }
 
         }
@@ -19,4 +23,4 @@ function replica(...objects) {
 
 }
 
-// console.log(replica({ a: { b: 1, c: 2 } }, { a: { c: 23 } }))
+// console.log(replica({ line: 'Replicants are like any other machine' }, { author: 'Rich' }))
