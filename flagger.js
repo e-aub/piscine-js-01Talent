@@ -1,7 +1,10 @@
 function flags(obj){
     const result = {alias : {h : 'help'}, description : []}
     const flags = Object.keys(obj)
-    if(flags.length === 0)return result
+    if(flags.length === 0){
+        result.description = ''
+        return result
+    }
     for(let flag of flags){
         result.alias[flag.slice(0,1)] = flag;
     }
