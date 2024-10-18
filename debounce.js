@@ -1,21 +1,30 @@
 function debounce(func, wait) {
     let timer
-    return (...args) => {
+    return function (args) {
         clearTimeout(timer)
-        timer = setTimeout(()=>func(args), wait)
+        console.log(timer)
+        timer = setTimeout(() => func(...args), wait)
     }
 }
 
-function opDebounce(options) {
+function opDebounce(func, wait, leading = false) {
+    let timer
+    let isTimeOutActive = false
+    return function (...args) {
+        clearTimeout(timer)
+        if (leading) {
+            if (!isTimeOutActive) {
+                func(...args)
+                isTimeOutActive = true
+            }
+            timer = setTimeout(() => {
+                isTimeOutActive = false
+
+            }, wait)
+        } else {
+                timer = setTimeout(() => func(...args), wait)
+            }
+        }
 
 }
 
-const output = document.getElementById('output');
-
-const logInput = debounce((value)=>{
-    output.textContent = value
-}, 1000)
-
-document.getElementById('input').addEventListener('input', (event)=>{
-    logInput(event.target.value)
-})
