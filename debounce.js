@@ -1,6 +1,6 @@
 function debounce(func, wait) {
     let timer
-    return function (args) {
+    return function (...args) {
         clearTimeout(timer)
         console.log(timer)
         timer = setTimeout(() => func(...args), wait)
