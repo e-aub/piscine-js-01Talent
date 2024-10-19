@@ -1,4 +1,4 @@
-function throttle1(func, wait) {
+function throttle(func, wait) {
     let waitingArgs = null
     let souldWait = false
 
