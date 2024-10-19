@@ -1,26 +1,27 @@
-function throttle(func, wait) {
-    let WaitArgs = null
-    let shouldWait = false
-    const timeOutFunc = () => {
-        if (WaitArgs == null) {
-            shouldWait = false
+function throttle(func, wait){
+    let waitingArgs = null
+    let souldWait = false
+
+    return function(...args){
+        if(souldWait){
+            waitingArgs = args
+            return
         }else{
-            func(...WaitArgs)
-            WaitArgs = null
-            setTimeout(timeOutFunc, wait)
+            if(waitingArgs == null){
+                func(...args)
+                souldWait = true
+            }else{
+                func(...waitingArgs)
+                waitingArgs = null
+                souldWait = true
+            }
+            setTimeout(()=>{
+                souldWait = false
+            }, wait)
         }
     }
 
-    return function (...args) {
-        if (shouldWait) {
-            WaitArgs = args
-            return
-        }
-        func(...args)
-        shouldWait = true
-        setTimeout(timeOutFunc, wait)
-    }
-    
+
 }
 
 
