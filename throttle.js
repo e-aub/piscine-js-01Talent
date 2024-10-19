@@ -24,21 +24,47 @@ function opThrottle(func, wait, options = { leading: true, trailing: true }) {
         }, wait)
     }
     return function (...args) {
-        if (souldWait) {
-            if(options.leading && options.trailing){
+        if (!options.leading && !options.trailing) {
+            return
+        } else if (options.leading && options.trailing) {
+            if (souldWait) {
+                lastArgs = args
+            } else {
+                func(...args)
+                souldWait = true
+                setTimeout(() => {
+                    souldWait = false
+                    if (lastArgs) {
+                        func(...lastArgs)
+                        lastArgs = null
+                        souldWait = true
+                        setTimeout(() => {
+                            souldWait = false
+                        }, wait)
+                    }
+                }, wait)
+            }
+        } else if (options.leading && !options.trailing) {
+            if (!souldWait) {
+                func(...args)
+                souldWait = true
+                setTimeout(() => {
+                    souldWait = false
+                }, wait)
+            }
+        } else {
+            if (!souldWait) {
+                souldWait = true
+                setTimeout(() => {
+                    souldWait = false
+                    if (lastArgs) {
+                        func(...lastArgs)
+                        lastArgs = null
+                    }
+                }, wait)
+            } else {
                 lastArgs = args
             }
-            return
-        } else {
-            if(options.leading && options.trailing){
-                func(...lastArgs)
-                lastArgs = null
-            }
-            func(...args)
-            souldWait = true
-            setTimeout(() => {
-                souldWait = false
-            }, wait)
         }
     }
 }
