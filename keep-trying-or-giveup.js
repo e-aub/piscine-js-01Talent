@@ -21,14 +21,12 @@ function timeout(delay, callback) {
                 reject(new Error('timeout'));
             }, delay);
 
-            (async () => {
-                try {
-                    const res = await callback(...args)
-                    resolve(res)
-                } catch (error) {
-                    reject(new Error('error'))
-                }
-            })()
+            try {
+                const res = callback(...args).then(res => resolve(res))
+            } catch (error) {
+                reject(new Error('error'))
+            }
+
         })
     }
 }
