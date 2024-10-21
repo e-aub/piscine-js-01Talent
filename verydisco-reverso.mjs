@@ -7,16 +7,16 @@ async function veryDiscoReverso() {
     }
     let fileName = args[2];
 
-    try{
-        let sentence = await readFile(fileName,'utf8')
-        sentence = sentence.split(/\s+/);
+    try {
+        let sentence = await readFile(fileName, 'utf8')
+        sentence = sentence.split(/\s+/g);
         let result = []
         for (let word of sentence) {
-            let half = Math.ceil(word.length / 2);
-            result.push(word.slice(half , word.length) + word.slice(0, half))
+            let half = Math.floor(word.length / 2);
+            result.push(word.slice(half, word.length) + word.slice(0, half))
         }
         console.log(result.join(' '))
-    }catch(err){
+    } catch (err) {
         console.log(err)
     }
 }
