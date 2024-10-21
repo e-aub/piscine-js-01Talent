@@ -7,8 +7,12 @@ async function cypher() {
     if (args.length == 2 || args.length == 3) {
         if (args.length === 2) {
             fileName = args[0];
-            newFilename = fileName
             flag = args[1]
+            if(flag === 'encode'){
+                newFilename = 'cypher.txt'
+            }else if(flag === 'decode'){
+                newFilename = 'clear.txt'
+            }
         }
         if (args.length === 3) {
             newFilename = args[2]
