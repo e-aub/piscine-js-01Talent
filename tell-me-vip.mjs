@@ -17,7 +17,7 @@ async function vip() {
         }))
         files = files.filter(fileName => fileName !== null)
 
-        files =files.map(fileName => {
+        files = files.map(fileName => {
             let temp = fileName.split('_')
             temp = [temp[1].replace(/.json/, ''), temp[0]]
             return temp
@@ -29,7 +29,8 @@ async function vip() {
         let count = 1
         let result = ''
         for (let fileName of files) {
-            result += `${count}. ${fileName[0]} ${fileName[1]}\n`
+
+            result += `${count}. ${fileName[0]} ${fileName[1]}${count!= files.length?'\n' : ''}`
             count++
         }
         writeFile('vip.txt', result)
