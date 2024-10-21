@@ -9,16 +9,20 @@ async function vip() {
     }
     try {
         let files = await readdir(path, 'utf8');
-        files = files.filter(async fileName => {
-            let fileContent = await readFile(`${path}/${fileName}`, 'utf8')
-            let json = JSON.parse(fileContent)
-            if (json.answer === 'yes') return true
-        }).map(fileName => {
+        console.log(files.length)
+        files = await Promise.all(files.map(async (fileName) => {
+            let content = await readFile(`${path}/${fileName}`, 'utf8')
+            let jsonData = JSON.parse(content);
+            return jsonData.answer === 'yes' ? fileName : null
+        }))
+        files = files.filter(fileName => fileName !== null)
+
+        files =files.map(fileName => {
             let temp = fileName.split('_')
             temp = [temp[1].replace(/.json/, ''), temp[0]]
             return temp
         })
-       
+
         files = files.sort((a, b) => {
             return a[0].localeCompare(b[0])
         })
