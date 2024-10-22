@@ -12,37 +12,31 @@ function listenAndServe() {
     console.log('starting server at port :5000')
     http.createServer(async (req, res) => {
         res.setHeader('content-type', 'application/json');
-        const fileName = (req.url).replace('/', '')
-        if (fileName.length == 0) {
-            res.writeHead(404)
-            const obj = { error: 'guest not found' }
-            res.write(obj)
-        } else {
+        let fileName = req.url
+        try {
+            const fileContent = await readFile('./guests' + fileName + '.json')
             try {
-                const fileContent = await readFile('./guests/' + fileName + '.json')
-                try {
-                    JSON.parse(fileContent);
-                    res.writeHead(200)
-                    res.write(fileContent)
-                    res.end()
-                } catch (err) {
-                    res.writeHead(500)
-                    const obj = { error: 'server failed' }
-                    res.write(JSON.stringify(obj))
-                    res.end()
-                }
+                JSON.parse(fileContent);
+                res.writeHead(200)
+                res.write(fileContent)
+                res.end()
             } catch (err) {
-                if ((err.message).includes('no such file or directory')) {
-                    res.writeHead(404)
-                    const obj = { error: 'guest not found' }
-                    res.write(JSON.stringify(obj))
-                    res.end()
-                } else {
-                    res.writeHead(500)
-                    const obj = { error: 'server failed' }
-                    res.write(JSON.stringify(obj))
-                    res.end()
-                }
+                res.writeHead(500)
+                const obj = { error: 'server failed' }
+                res.write(JSON.stringify(obj))
+                res.end()
+            }
+        } catch (err) {
+            if ((err.message).includes('no such file or directory')) {
+                res.writeHead(404)
+                const obj = { error: 'guest not found' }
+                res.write(JSON.stringify(obj))
+                res.end()
+            } else {
+                res.writeHead(500)
+                const obj = { error: 'server failed' }
+                res.write(JSON.stringify(obj))
+                res.end()
             }
         }
     }).listen(5000)
