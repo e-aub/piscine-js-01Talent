@@ -21,9 +21,8 @@ http.createServer((req, res) => {
     req.on('end', () => {
         try {
             writeFileSync(fileName, recivedData);
-            JSON.parse(recivedData)
             res.setHeader('content-type', 'application/json')
-            res.statusCode = 201
+            res.statusCode = 200
             res.end(recivedData)
         } catch (error) {
             res.setHeader('content-type', 'application/json')
