@@ -25,7 +25,6 @@ http.createServer((req, res) => {
             res.statusCode = 201
             res.end(recivedData)
         } catch (error) {
-            console.log(error)
             res.setHeader('content-type', 'application/json')
             res.statusCode = 500
             res.end(JSON.stringify({ error: 'server failed' }))
