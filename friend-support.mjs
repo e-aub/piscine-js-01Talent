@@ -32,10 +32,17 @@ function listenAndServe() {
                     res.end()
                 }
             } catch (err) {
-                res.writeHead(404)
-                const obj = { error: 'guest not found' }
-                res.write(JSON.stringify(obj))
-                res.end()
+                if ((err.message).includes('no such file or directory')) {
+                    res.writeHead(404)
+                    const obj = { error: 'guest not found' }
+                    res.write(JSON.stringify(obj))
+                    res.end()
+                } else {
+                    res.writeHead(500)
+                    const obj = { error: 'server failed' }
+                    res.write(JSON.stringify(obj))
+                    res.end()
+                }
             }
         }
     }).listen(5000)
