@@ -13,17 +13,20 @@ function listenAndServe() {
     http.createServer((req, res) => {
         let fileName = req.url
         try {
-            const fileContent = readFileSync('./guests' + fileName + '.json', 'utf-8')
-            res.writeHead(200, { "content-Type": 'application/json' })
+            const fileContent = readFileSync('guests' + fileName + '.json', 'utf-8')
+            res.statusCode = 200;
+            res.writeHead("content-Type", 'application/json');
             res.write(fileContent)
             res.end()
         } catch (err) {
             if ((err.code === 'ENOENT')) {
-                res.writeHead(404, { "content-Type": 'application/json' })
+                res.statusCode = 404;
+                res.writeHead("content-Type", 'application/json');
                 res.write(JSON.stringify({ error: 'guest not found' }))
                 res.end()
             } else {
-                res.writeHead(500, { "content-Type": 'application/json' })
+                res.statusCode = 500;
+                res.writeHead("content-Type", 'application/json');
                 res.write(JSON.stringify({ error: 'server failed' }))
                 res.end()
             }
