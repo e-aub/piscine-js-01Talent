@@ -1,5 +1,6 @@
 import http from 'http'
 import { writeFileSync } from 'fs'
+import { Headers } from 'undici-types';
 
 const authenticatedUsers = ['Caleb_Squires:abracadabra',
     'Tyrique_Dalton:abracadabra',
@@ -20,17 +21,18 @@ http.createServer((req, res) => {
     let fileName = 'guests/' + req.url.replace('/', '') + '.json'
     console.log(fileName)
     req.on('end', () => {
-        // try {
+        try {
+            recivedData = req.eaders.body
             recivedData = JSON.stringify(JSON.parse(recivedData))
             writeFileSync(fileName, recivedData);
             res.setHeader('content-type', 'application/json')
             res.statusCode = 200
             res.end(recivedData)
-        // } catch (error) {
-        //     res.setHeader('content-type', 'application/json')
-        //     res.statusCode = 500
-        //     res.end(JSON.stringify({ error: 'server failed' }))
-        // }
+        } catch (error) {
+            res.setHeader('content-type', 'application/json')
+            res.statusCode = 500
+            res.end(JSON.stringify({ error: 'server failed' }))
+        }
     })
 }).listen(5000, 'localhost', () => console.log('starting server at port :5000'));
 
