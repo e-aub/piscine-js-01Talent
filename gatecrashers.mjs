@@ -1,6 +1,5 @@
 import http from 'http';
 import { writeFileSync, mkdirSync } from 'fs';
-import { atob } from 'abab'; // Ensure you import or polyfill atob if necessary
 
 const authenticatedUsers = [
     'Caleb_Squires:abracadabra',
