@@ -17,7 +17,7 @@ http.createServer((req, res) => {
     req.on('data', dataChunk => {
         recivedData += dataChunk.toString()
     })
-    let fileName = '/guests/' + req.url.replace('/', '') + '.json'
+    let fileName = 'guests/' + req.url.replace('/', '') + '.json'
     console.log(fileName)
     req.on('end', () => {
         try {
