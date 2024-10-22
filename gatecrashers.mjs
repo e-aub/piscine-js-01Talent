@@ -6,9 +6,9 @@ const authenticatedUsers = ['Caleb_Squires:abracadabra',
     'Rahima_Young:abracadabra'];
 
 http.createServer((req, res) => {
-    let credentials = req.headers.authorization ? req.headers.authorization : '' 
+    let credentials = req.headers.authorization ? req.headers.authorization : ''
     credentials = atob(credentials.replace('Basic ', ''))
-    if(!authenticatedUsers.includes(credentials)){
+    if (!authenticatedUsers.includes(credentials)) {
         res.statusCode = 401;
         res.end()
         return
@@ -20,6 +20,7 @@ http.createServer((req, res) => {
     let fileName = 'guests/' + req.url.replace('/', '') + '.json'
     req.on('end', () => {
         try {
+            recivedData = JSON.stringify(JSON.parse(recivedData))
             writeFileSync(fileName, recivedData);
             res.setHeader('content-type', 'application/json')
             res.statusCode = 200
