@@ -4,35 +4,28 @@
 //Responses will always be JSON
 
 import http from 'http'
-import { readFile } from 'fs/promises';
+import { readFileSync } from 'fs';
 
 
 
 function listenAndServe() {
     console.log('starting server at port :5000')
-    http.createServer(async (req, res) => {
+    http.createServer((req, res) => {
         let fileName = req.url
         try {
-            const fileContent = await readFile('./guests' + fileName + '.json')
-            // try {
+            const fileContent = readFileSync('./guests' + fileName + '.json', 'utf-8')
             JSON.parse(fileContent);
-            res.writeHead(200, {"content-Type": 'application/json'})
+            res.writeHead(200, { "content-Type": 'application/json' })
 
             res.write(fileContent)
             res.end()
-            // } catch (err) {
-            //     res.writeHead(500)
-            //     const obj = { error: 'server failed' }
-            //     res.write(JSON.stringify(obj))
-            //     res.end()
-            // }
         } catch (err) {
             if ((err.code === 'ENOENT')) {
-                res.writeHead(404, {"content-Type": 'application/json'})
+                res.writeHead(404, { "content-Type": 'application/json' })
                 res.write(JSON.stringify({ error: 'guest not found' }))
                 res.end()
             } else {
-                res.writeHead(500, {"content-Type": 'application/json'})
+                res.writeHead(500, { "content-Type": 'application/json' })
                 res.write(JSON.stringify({ error: 'server failed' }))
                 res.end()
             }
