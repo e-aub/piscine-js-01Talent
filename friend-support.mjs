@@ -16,19 +16,18 @@ function listenAndServe() {
         try {
             const fileContent = readFileSync('guests' + fileName + '.json', 'utf-8')
             res.statusCode = 200;
-            res.write(fileContent)
-            res.end()
+            // res.write(fileContent)
+            res.end(fileContent)
         } catch (err) {
             if ((err.code === 'ENOENT')) {
                 res.statusCode = 404;
                 // res.writeHead("content-Type", 'application/json');
-                res.write(JSON.stringify({ error: 'guest not found' }))
-                res.end()
+                // res.write(JSON.stringify({ error: 'guest not found' }))
+                res.end(JSON.stringify({ error: 'guest not found' }))
             } else {
                 res.statusCode = 500;
                 // res.writeHead("content-Type", 'application/json');
-                res.write(JSON.stringify({ error: 'server failed' }))
-                res.end()
+                res.end(JSON.stringify({ error: 'server failed' }))
             }
         }
     }).listen(5000)
