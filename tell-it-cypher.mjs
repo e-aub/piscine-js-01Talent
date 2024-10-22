@@ -4,7 +4,7 @@ async function cypher() {
     let newFilename = ''
     var fileName
     const args = process.argv.slice(2);
-    if (args.length >= 3) {
+    if (args.length <= 3) {
         fileName = args[0];
         flag = args[1]
         if (flag === 'encode') {
