@@ -14,9 +14,7 @@ function listenAndServe() {
         let fileName = req.url
         try {
             const fileContent = readFileSync('./guests' + fileName + '.json', 'utf-8')
-            JSON.parse(fileContent);
             res.writeHead(200, { "content-Type": 'application/json' })
-
             res.write(fileContent)
             res.end()
         } catch (err) {
