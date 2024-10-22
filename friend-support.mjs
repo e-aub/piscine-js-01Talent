@@ -15,17 +15,17 @@ function listenAndServe() {
         let fileName = req.url
         try {
             const fileContent = await readFile('./guests' + fileName + '.json')
-            try {
+            // try {
                 JSON.parse(fileContent);
                 res.writeHead(200)
                 res.write(fileContent)
                 res.end()
-            } catch (err) {
-                res.writeHead(500)
-                const obj = { error: 'server failed' }
-                res.write(JSON.stringify(obj))
-                res.end()
-            }
+            // } catch (err) {
+            //     res.writeHead(500)
+            //     const obj = { error: 'server failed' }
+            //     res.write(JSON.stringify(obj))
+            //     res.end()
+            // }
         } catch (err) {
             if ((err.message).includes('no such file or directory')) {
                 res.writeHead(404)
