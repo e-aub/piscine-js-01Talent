@@ -22,7 +22,6 @@ http.createServer((req, res) => {
     console.log(fileName)
     req.on('end', () => {
         try {
-            recivedData = req.eaders.body
             recivedData = JSON.stringify(JSON.parse(recivedData))
             writeFileSync(fileName, recivedData);
             res.setHeader('content-type', 'application/json')
