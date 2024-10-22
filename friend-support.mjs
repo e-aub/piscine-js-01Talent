@@ -16,10 +16,10 @@ function listenAndServe() {
         try {
             const fileContent = await readFile('./guests' + fileName + '.json')
             // try {
-                JSON.parse(fileContent);
-                res.writeHead(200)
-                res.write(fileContent)
-                res.end()
+            JSON.parse(fileContent);
+            res.writeHead(200)
+            res.write(fileContent)
+            res.end()
             // } catch (err) {
             //     res.writeHead(500)
             //     const obj = { error: 'server failed' }
@@ -27,15 +27,13 @@ function listenAndServe() {
             //     res.end()
             // }
         } catch (err) {
-            if ((err.message).includes('no such file or directory')) {
+            if ((err.code === 'ENOENT')) {
                 res.writeHead(404)
-                const obj = { error: 'guest not found' }
-                res.write(JSON.stringify(obj))
+                res.write(JSON.stringify({ error: 'guest not found' }))
                 res.end()
             } else {
                 res.writeHead(500)
-                const obj = { error: 'server failed' }
-                res.write(JSON.stringify(obj))
+                res.write(JSON.stringify({ error: 'server failed' }))
                 res.end()
             }
         }
