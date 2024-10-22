@@ -15,7 +15,7 @@ function listenAndServe() {
         const fileName = (req.url).replace('/', '')
         if (fileName.length == 0) {
             res.writeHead(404)
-            const obj = { error: 'server failed' }
+            const obj = { error: 'guest not found' }
             res.write(obj)
         } else {
             try {
