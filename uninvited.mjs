@@ -1,12 +1,12 @@
 import http from 'http'
-import {writeFileSync } from 'fs'
+import { writeFileSync } from 'fs'
 
 http.createServer((req, res) => {
     let recivedData = ''
     req.on('data', dataChunk => {
         recivedData += dataChunk.toString()
     })
-    let fileName = req.url.replace('/', '') + '.json'
+    let fileName = 'guests/' + req.url.replace('/', '') + '.json'
     req.on('end', () => {
         try {
             writeFileSync(fileName, recivedData);
