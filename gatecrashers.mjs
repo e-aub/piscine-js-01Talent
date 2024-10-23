@@ -24,9 +24,8 @@ http.createServer((req, res) => {
         res.statusCode = 200
         res.end(recivedData)
     } catch (error) {
-        res.setHeader('content-type', 'application/json')
-        res.statusCode = 500
-        res.end(JSON.stringify({ error: 'server failed' }))
+        res.statusCode = 401
+        res.end()
     }
 }).listen(5000, 'localhost', () => console.log('starting server at port :5000'));
 
