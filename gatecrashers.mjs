@@ -13,13 +13,10 @@ http.createServer((req, res) => {
         res.end()
         return
     }
-    let recivedData = ''
-    req.on('data', dataChunk => {
-        recivedData += dataChunk.toString()
-    })
+    let recivedData = req.headers.body
+ 
     let fileName = 'guests/' + req.url.replace('/', '') + '.json'
     console.log(fileName)
-    req.on('end', () => {
         try {
             recivedData = JSON.stringify(JSON.parse(recivedData))
             writeFileSync(fileName, recivedData);
@@ -31,6 +28,5 @@ http.createServer((req, res) => {
             res.statusCode = 500
             res.end(JSON.stringify({ error: 'server failed' }))
         }
-    })
 }).listen(5000, 'localhost', () => console.log('starting server at port :5000'));
 
